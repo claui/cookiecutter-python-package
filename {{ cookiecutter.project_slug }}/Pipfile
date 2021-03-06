@@ -22,6 +22,6 @@ pytest = "*"
 python_version = "{{ cookiecutter.python_version }}"
 
 [scripts]
-{{ cookiecutter.first_module_name }} = "python3 src/{{ cookiecutter.first_module_name }}.py"
+{{ cookiecutter.first_module_name }} = "python src/{{ cookiecutter.first_module_name }}.py"
 linter = "pylint src"
 tests = "pytest"
