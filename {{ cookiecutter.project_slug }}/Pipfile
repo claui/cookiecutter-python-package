@@ -5,6 +5,10 @@ name = "pypi"
 
 [packages]
 {{ cookiecutter.project_slug }} = {editable = true, path = "./src"}
+{%- if cookiecutter.use_fire == "y" %}
+colorama = "*"
+fire = "*"
+{%- endif %}
 {%- if cookiecutter.use_pandas == "y" %}
 pandas = "*"
 {%- endif %}

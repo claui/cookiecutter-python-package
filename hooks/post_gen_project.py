@@ -5,6 +5,11 @@ import subprocess
 os.unlink('.venv/.keep')
 shutil.rmtree('licenses')
 
+{%- if cookiecutter.use_fire != "y" %}
+os.unlink('src/fire_workarounds.py')
+{%- endif %}
+
+{%- if cookiecutter.install_dependencies_now == "y" %}
 subprocess.run(
     'pipenv install -d',
     env={
@@ -15,3 +20,4 @@ subprocess.run(
     check=True,
     shell=True,
 )
+{%- endif %}

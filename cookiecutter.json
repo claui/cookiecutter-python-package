@@ -7,5 +7,7 @@
   "python_version": "3.9",
   "author_full_name": "",
   "copyright_holder_full_name": "{{ cookiecutter.author_full_name }}",
-  "use_pandas": "n"
+  "use_fire": "n",
+  "use_pandas": "n",
+  "install_dependencies_now": "y"
 }

@@ -1,0 +1,68 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {%- if cookiecutter.use_fire == "y" %}
+    {
+      "label": "{{ cookiecutter.first_module_name }}: Show usage help",
+      "type": "process",
+      "command": "pipenv",
+      "args": [
+        "run",
+        "{{ cookiecutter.first_module_name }}"
+      ],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "clear": true,
+        "showReuseMessage": false
+      }
+    },
+    {%- endif %}
+    {
+      "label": "{{ cookiecutter.first_module_name }}: Run hello",
+      "type": "process",
+      "command": "pipenv",
+      "args": [
+        "run",
+        "{{ cookiecutter.first_module_name }}"
+        {%- if cookiecutter.use_fire == "y" %},
+        "hello"
+        {%- endif %}
+      ],
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "clear": true,
+        "showReuseMessage": false
+      }
+    },
+    {
+      "label": "{{ cookiecutter.first_module_name }}: Run hello '{{ cookiecutter.author_full_name }}'",
+      "type": "process",
+      "command": "pipenv",
+      "args": [
+        "run",
+        {%- if cookiecutter.use_fire == "y" %}
+        "{{ cookiecutter.first_module_name }}",
+        "hello",
+        "{{ cookiecutter.author_full_name }}"
+        {%- else %}
+        "python",
+        "-c",
+        "import {{ cookiecutter.first_module_name }}; print({{ cookiecutter.first_module_name }}.hello(\"{{ cookiecutter.author_full_name }}\"))"
+        {%- endif %}
+      ],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "clear": true,
+        "showReuseMessage": false
+      }
+    }
+  ]
+}
