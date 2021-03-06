@@ -1,0 +1,23 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+{{ cookiecutter.project_slug }} = {editable = true, path = "./src"}
+{%- if cookiecutter.use_pandas == "y" %}
+pandas = "*"
+{%- endif %}
+
+[dev-packages]
+pylint = "~=2.7"
+autopep8 = "*"
+pytest = "*"
+
+[requires]
+python_version = "{{ cookiecutter.python_version }}"
+
+[scripts]
+{{ cookiecutter.first_module_name }} = "python3 src/{{ cookiecutter.first_module_name }}.py"
+linter = "pylint src"
+tests = "pytest"

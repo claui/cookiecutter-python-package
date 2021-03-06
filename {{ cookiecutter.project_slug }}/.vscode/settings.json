@@ -1,0 +1,15 @@
+{
+  "python.pythonPath": "./.venv/bin/python",
+  "python.linting.pylintEnabled": true,
+  "python.linting.pylintPath": "./.venv/bin/pylint",
+  "python.linting.enabled": true,
+  "code-runner.executorMap": {
+    "python": "pipenv run python",
+  },
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "python.testing.unittestEnabled": false,
+  "python.testing.nosetestsEnabled": false,
+  "python.testing.pytestEnabled": true
+}
