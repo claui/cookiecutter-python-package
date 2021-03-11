@@ -15,7 +15,7 @@ if __name__ == '__main__':
 {%- if cookiecutter.use_fire == "y" %}
     fire_workarounds.apply()
     fire.Fire({
-        "hello": hello
+        'hello': hello
     })
 {%- else %}
     print(hello())

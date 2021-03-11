@@ -1,3 +1,5 @@
+# pylint: disable=missing-function-docstring, missing-module-docstring, no-self-use
+
 import {{ cookiecutter.first_module_name }}
 
 
