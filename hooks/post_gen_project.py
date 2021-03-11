@@ -17,6 +17,7 @@ pipenv_environment.update({
         'SYSTEM_VERSION_COMPAT': '1',
 })
 
+print('Running pipenv. This may take a while.')
 subprocess.run(
     'pipenv install -d',
     env=pipenv_environment,
