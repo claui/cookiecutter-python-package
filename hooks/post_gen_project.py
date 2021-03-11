@@ -10,13 +10,16 @@ os.unlink('src/fire_workarounds.py')
 {%- endif %}
 
 {%- if cookiecutter.install_dependencies_now == "y" %}
-subprocess.run(
-    'pipenv install -d',
-    env={
-        'LANG': 'en_US.UTF-8',
+pipenv_environment = os.environ.copy()
+pipenv_environment.update({
+        'LANG': pipenv_environment.get('LANG', 'en_US.UTF-8'),
         'PIPENV_IGNORE_VIRTUALENVS': '1',
         'SYSTEM_VERSION_COMPAT': '1',
-    },
+})
+
+subprocess.run(
+    'pipenv install -d',
+    env=pipenv_environment,
     check=True,
     shell=True,
 )
