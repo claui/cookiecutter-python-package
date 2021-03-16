@@ -1,4 +1,4 @@
-# pylint: disable=missing-function-docstring, missing-module-docstring, no-self-use
+# pylint: disable=missing-function-docstring, missing-module-docstring, no-self-use, too-many-public-methods
 
 import {{ cookiecutter.first_module_name }}
 
