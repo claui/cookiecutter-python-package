@@ -16,11 +16,21 @@ The Python version manager `pyenv` makes sure you can always keep
 the exact Python version required by {{ cookiecutter.project_title }},
 regardless of your system Python.
 
+#### Installing pyenv on Windows
+
 To install `pyenv` on Windows, run:
 
 ```
 choco install pyenv-win
 ```
+
+#### Installing pyenv on Linux
+
+To install `pyenv` on Linux or WSL2, first make sure Python 3 is
+installed. Then follow the _Basic GitHub Checkout_ method described
+at [github.com/pyenv/pyenv](https://github.com/pyenv/pyenv#basic-github-checkout).
+
+#### Installing pyenv on macOS
 
 To install `pyenv` on macOS, run:
 
@@ -28,9 +38,14 @@ To install `pyenv` on macOS, run:
 brew install pyenv
 ```
 
-Continuing without `pyenv` is not recommended.
-{{ cookiecutter.project_title | capitalize }} requires a specific
-Python version, which is enforced by the `Pipfile`.
+#### Checking your system-wide pyenv installation
+
+To verify your `pyenv` is working, run:
+
+```
+pyenv --version
+```
+
 
 ### Checking your system-wide Python installation
 
