@@ -1,6 +1,6 @@
 # pylint: disable=missing-function-docstring, missing-module-docstring, no-self-use, too-many-public-methods
 
-import {{ cookiecutter.first_module_name }}
+import {{ cookiecutter.project_slug }}.{{ cookiecutter.first_module_name }} as {{ cookiecutter.first_module_name }}
 
 
 def test_hello_with_author_name():

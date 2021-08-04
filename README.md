@@ -46,7 +46,7 @@ The Cookiecutter template will give you:
 
 - a `LICENSE` file;
 
-- the root Python package, located at `src`;
+- the root Python package, located at `{{ cookiecutter.project_slug }}`;
 
 - the first module, located in the root Python package;
 

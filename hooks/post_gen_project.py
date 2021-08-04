@@ -17,7 +17,7 @@ with open('.vscode/settings.json', 'r+') as file:
     file.truncate()
 
 {%- if cookiecutter.use_fire != "y" %}
-os.unlink('src/fire_workarounds.py')
+os.unlink('{{ cookiecutter.project_slug }}/fire_workarounds.py')
 {%- endif %}
 
 {%- if cookiecutter.install_dependencies_now == "y" %}
