@@ -1,7 +1,7 @@
 # cookiecutter-python-package
 
 [Cookiecutter](https://github.com/cookiecutter/cookiecutter)
-template for generating Python projects with a focus on long-term
+template for Python projects with a focus on long-term
 maintainability and a reliable setup.
 
 ## About this template
@@ -10,9 +10,9 @@ maintainability and a reliable setup.
 
 `cookiecutter-python-package` is an opinionated Cookiecutter template
 for Python projects with a focus on:
-    
-- **long-term maintainability** (think decades rather than years) of the
-  generated project;
+
+- **long-term maintainability** of the generated project (think
+  decades, not years);
 
 - **reliability** through step-by-step instructions, enabling users
   to build, run, and work on the generated project on diverse
@@ -38,9 +38,9 @@ The template allows you to specify:
 
 - whether to include the `pandas` package.
 
-### What you get out
+### What you get out of it
 
-Running the Cookiecutter template will give you:
+The Cookiecutter template will give you:
 
 - a `README.md` file with detailed instructions;
 
