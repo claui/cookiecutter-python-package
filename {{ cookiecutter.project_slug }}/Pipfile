@@ -4,7 +4,7 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
-{{ cookiecutter.project_slug }} = {editable = true, path = "./{{ cookiecutter.project_slug }}"}
+project_root = {editable = true, path = "."}
 {%- if cookiecutter.use_fire == "y" %}
 colorama = "*"
 fire = "*"
@@ -22,6 +22,6 @@ pytest = "*"
 python_version = "{{ cookiecutter.python_version }}"
 
 [scripts]
-{{ cookiecutter.first_module_name }} = "python {{ cookiecutter.project_slug }}"
+cli = "python {{ cookiecutter.project_slug }}"
 linter = "pylint {{ cookiecutter.project_slug }}"
 tests = "pytest"

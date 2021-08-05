@@ -1,17 +1,35 @@
 {
+  "code-runner.clearPreviousOutput": true,
+  "code-runner.executorMap": {
+    "python": "pipenv run python",
+  },
+  "code-runner.ignoreSelection": true,
+  "code-runner.saveFileBeforeRun": true,
+  "editor.rulers": [
+    68,
+    72
+  ],
+  "files.exclude": {
+    "**/.git": true,
+    "**/.mypy_cache": true,
+    "**/.pytest_cache": true,
+    "**/.shims": true,
+    "**/.venv": true,
+    "**/*.egg-info": true,
+    "**/__pycache__": true
+  },
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
   "python.pythonPath": "${workspaceFolder}/.venv",
   "python.linting.pylintEnabled": true,
   "python.linting.pylintPath": "${workspaceFolder}/.shims/pylint.SHIM_EXT",
   "python.linting.enabled": true,
-  "code-runner.ignoreSelection": true,
-  "code-runner.executorMap": {
-    "python": "pipenv run python",
-  },
   "python.testing.pytestArgs": [
     "tests"
   ],
   "python.testing.unittestEnabled": false,
   "python.testing.nosetestsEnabled": false,
-  "python.testing.pytestEnabled": true
+  "python.testing.pytestEnabled": true,
+  "workbench.editor.decorations.badges": false,
+  "workbench.editor.decorations.colors": false,
+  "workbench.editor.untitled.hint": "hidden"
 }

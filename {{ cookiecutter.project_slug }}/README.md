@@ -85,7 +85,7 @@ pipenv install -d
 To execute {{ cookiecutter.first_module_name }}, run:
 
 ```
-pipenv run {{ cookiecutter.first_module_name }}
+pipenv run cli
 ```
 
 

@@ -2,11 +2,11 @@
 
 {%- if cookiecutter.use_fire == "y" %}
 import fire
-
 {%- endif %}
-import {{ cookiecutter.project_slug }}.{{ cookiecutter.first_module_name }} as {{ cookiecutter.first_module_name }}
+
+from {{ cookiecutter.project_slug }} import {{ cookiecutter.first_module_name }}
 {%- if cookiecutter.use_fire == "y" %}
-import {{ cookiecutter.project_slug }}.fire_workarounds as fire_workarounds
+from {{ cookiecutter.project_slug }} import fire_workarounds
 
 fire_workarounds.apply()
 fire.Fire({

@@ -1,7 +1,7 @@
 {
   "project_title": "",
   "project_slug": "{{ cookiecutter.project_title.lower().replace(' ', '_').replace('-', '_') }}",
-  "first_module_name": "{{ cookiecutter.project_slug }}",
+  "first_module_name": "api",
   "project_version": "0.1.0",
   "project_license": ["Apache-2.0", "Proprietary"],
   "python_version": "3.9",

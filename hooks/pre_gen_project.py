@@ -8,6 +8,10 @@ This Cookiecutter template requires Python 3.5 or higher.
 """
     )
 
+if '{{ cookiecutter.project_slug }}' \
+        == '{{ cookiecutter.first_module_name }}':
+    sys.exit('Project slug and first module name cannot be the same')
+
 if not shutil.which('pipenv'):
     sys.exit(
         """
