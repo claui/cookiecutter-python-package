@@ -54,7 +54,8 @@
         {%- else %}
         "python",
         "-c",
-        "import {{ cookiecutter.project_slug }}; print({{ cookiecutter.project_slug }}.hello(\"{{ cookiecutter.author_full_name }}\"))"
+        "import sys; import {{ cookiecutter.project_slug }}; print({{ cookiecutter.project_slug }}.hello(sys.argv[-1]))",
+        "{{ cookiecutter.author_full_name }}"
         {%- endif %}
       ],
       "problemMatcher": [],
