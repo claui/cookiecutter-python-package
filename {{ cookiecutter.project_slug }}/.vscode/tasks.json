@@ -6,7 +6,7 @@
     {%- if cookiecutter.use_fire == "y" %}
     {
       "label": "{{ cookiecutter.project_title }}: Show usage help",
-      "type": "process",
+      "type": "shell",
       "command": "pipenv",
       "args": [
         "run",
@@ -22,7 +22,7 @@
     {%- endif %}
     {
       "label": "{{ cookiecutter.project_title }}: Run hello",
-      "type": "process",
+      "type": "shell",
       "command": "pipenv",
       "args": [
         "run",
@@ -43,7 +43,7 @@
     },
     {
       "label": "{{ cookiecutter.project_title }}: Run hello '{{ cookiecutter.author_full_name }}'",
-      "type": "process",
+      "type": "shell",
       "command": "pipenv",
       "args": [
         "run",
