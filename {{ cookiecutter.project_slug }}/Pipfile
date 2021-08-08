@@ -17,6 +17,9 @@ pandas = "*"
 autopep8 = "*"
 pylint = "~=2.7"
 pytest = "*"
+{%- if cookiecutter.use_jupyter == "y" %}
+ipykernel = "*"
+{%- endif %}
 
 [requires]
 python_version = "{{ cookiecutter.python_version }}"

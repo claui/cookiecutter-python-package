@@ -8,6 +8,7 @@
   "author_full_name": "",
   "copyright_holder_full_name": "{{ cookiecutter.author_full_name }}",
   "use_fire": "n",
+  "use_jupyter": "n",
   "use_pandas": "n",
   "install_dependencies_now": "y"
 }
