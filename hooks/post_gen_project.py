@@ -12,7 +12,7 @@ with open('.vscode/settings.json', 'r+') as file:
     file.seek(0)
     file.write(content.replace(
         '.SHIM_EXT',
-        '.bat' if platform.system() == 'Windows' else ''
+        '.bat' if platform.system() == 'Windows' else '',
     ))
     file.truncate()
 
