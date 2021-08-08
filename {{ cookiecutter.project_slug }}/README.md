@@ -80,16 +80,16 @@ pipenv install -d
 ```
 
 
-## Running {{ cookiecutter.first_module_name }}
+## Running {{ cookiecutter.project_title }}
 
-To execute {{ cookiecutter.first_module_name }}, run:
+To execute {{ cookiecutter.project_title }}, run:
 
 ```
 pipenv run cli
 ```
 
 
-## Contributing to {{ cookiecutter.first_module_name }}
+## Contributing to {{ cookiecutter.project_title }}
 
 ### Running the tests
 
