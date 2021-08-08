@@ -29,10 +29,19 @@ pipenv_environment.update({
 })
 
 print('Running pipenv. This may take a while.')
-subprocess.run(
-    'pipenv install -d',
-    env=pipenv_environment,
-    check=True,
-    shell=True,
-)
+try:
+    subprocess.run(
+        'pipenv install -d',
+        env=pipenv_environment,
+        check=True,
+        shell=True,
+    )
+except subprocess.CalledProcessError as e:
+    print(
+        f'Pipenv failed with exit code {e.returncode}.',
+        'Fix any issues, then go to the '
+        '{{ cookiecutter.project_slug }} directory and re-run:',
+        f'    {e.cmd}',
+        sep='\n',
+    )
 {%- endif %}
