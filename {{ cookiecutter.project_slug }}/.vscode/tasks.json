@@ -64,6 +64,21 @@
         "clear": true,
         "showReuseMessage": false
       }
+    },
+    {
+      "label": "{{ cookiecutter.project_title }}: Install/update local dependencies",
+      "type": "shell",
+      "command": "pipenv",
+      "args": [
+        "install",
+        "-d"
+      ],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "clear": true,
+        "showReuseMessage": false
+      }
     }
   ]
 }
