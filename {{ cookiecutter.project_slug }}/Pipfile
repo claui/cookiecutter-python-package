@@ -15,7 +15,7 @@ pandas = "*"
 
 [dev-packages]
 autopep8 = "*"
-pylint = "~=2.7"
+pylint = "~=2.9"
 pytest = "*"
 {%- if cookiecutter.use_jupyter == "y" %}
 ipykernel = "*"
