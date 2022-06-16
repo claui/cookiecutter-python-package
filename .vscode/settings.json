@@ -2,6 +2,9 @@
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "files.associations": {
+    "**/hooks/*_gen_project.py": "jinja-py"
+  },
   "files.exclude": {
     "**/.git": true
   },
