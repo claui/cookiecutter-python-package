@@ -7,6 +7,9 @@ verify_ssl = true
 project_root = {editable = true, path = "."}
 {%- if cookiecutter.use_fire == "y" %}
 colorama = "*"
+{%- endif %}
+dataclass-wizard = "~=0.22"
+{%- if cookiecutter.use_fire == "y" %}
 fire = "*"
 {%- endif %}
 {%- if cookiecutter.use_pandas == "y" %}
