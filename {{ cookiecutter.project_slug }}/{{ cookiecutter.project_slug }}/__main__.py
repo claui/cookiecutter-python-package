@@ -1,7 +1,7 @@
 """Entry point for the CLI."""
 
 {%- if cookiecutter.use_fire == "y" %}
-import fire
+import fire  # type: ignore
 {%- endif %}
 
 from {{ cookiecutter.project_slug }} import {{ cookiecutter.first_module_name }}

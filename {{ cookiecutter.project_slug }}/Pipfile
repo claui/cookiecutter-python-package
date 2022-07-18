@@ -18,6 +18,7 @@ pandas = "*"
 
 [dev-packages]
 autopep8 = "*"
+mypy = "~=0.961"
 pylint = "~=2.14"
 pytest = "*"
 {%- if cookiecutter.use_jupyter == "y" %}
@@ -31,3 +32,4 @@ python_version = "{{ cookiecutter.python_version }}"
 cli = "python {{ cookiecutter.project_slug }}"
 linter = "pylint --enable-all-extensions {{ cookiecutter.project_slug }}"
 tests = "pytest"
+typecheck = "mypy"

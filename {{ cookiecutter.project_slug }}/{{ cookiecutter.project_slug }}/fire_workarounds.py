@@ -1,10 +1,10 @@
 """Several workarounds for known issues in our dependencies"""
 
-import colorama
-import fire
+import colorama  # type: ignore
+import fire  # type: ignore
 
 
-def __fire_suppress_pager():
+def __fire_suppress_pager() -> None:
     """Make Python Fire not use a pager when it prints a help text.
 
     See also:
@@ -13,7 +13,7 @@ def __fire_suppress_pager():
     fire.core.Display = lambda lines, out: print(*lines, file=out)
 
 
-def __vscode_code_runner_fix_colors():
+def __vscode_code_runner_fix_colors() -> None:
     """Work around an issue in the Code Runner extension for
     Visual Studio Code, which claims to understand ANSI sequences
     but doesn’t actually interpret them.
@@ -21,7 +21,7 @@ def __vscode_code_runner_fix_colors():
     colorama.init()
 
 
-def apply():
+def apply() -> None:
     """Applies all known workarounds."""
     __fire_suppress_pager()
     __vscode_code_runner_fix_colors()
