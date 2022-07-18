@@ -15,7 +15,7 @@ pandas = "*"
 
 [dev-packages]
 autopep8 = "*"
-pylint = "~=2.9"
+pylint = "~=2.14"
 pytest = "*"
 {%- if cookiecutter.use_jupyter == "y" %}
 ipykernel = "*"
@@ -26,5 +26,5 @@ python_version = "{{ cookiecutter.python_version }}"
 
 [scripts]
 cli = "python {{ cookiecutter.project_slug }}"
-linter = "pylint {{ cookiecutter.project_slug }}"
+linter = "pylint --enable-all-extensions {{ cookiecutter.project_slug }}"
 tests = "pytest"

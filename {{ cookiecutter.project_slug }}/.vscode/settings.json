@@ -19,10 +19,14 @@
     "**/__pycache__": true
   },
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
-  "python.pythonPath": "${workspaceFolder}/.venv",
+  "python.linting.enabled": true,
+  "python.linting.pylintArgs": [
+    "--enable-all-extensions"
+  ],
+  "python.linting.pylintCategorySeverity.refactor": "Warning",
   "python.linting.pylintEnabled": true,
   "python.linting.pylintPath": "${workspaceFolder}/.shims/pylint.SHIM_EXT",
-  "python.linting.enabled": true,
+  "python.pythonPath": "${workspaceFolder}/.venv",
   "python.testing.pytestArgs": [
     "tests"
   ],
