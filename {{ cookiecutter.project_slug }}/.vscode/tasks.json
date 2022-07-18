@@ -79,6 +79,17 @@
         "clear": true,
         "showReuseMessage": false
       }
+    },
+    {
+      "label": "{{ cookiecutter.project_title }}: Recreate the virtual environment",
+      "type": "shell",
+      "command": "pipenv --rm; pipenv install -d",
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "clear": true,
+        "showReuseMessage": false
+      }
     }
   ]
 }

@@ -116,6 +116,23 @@ pipenv run linter
 
 ## Maintenance
 
+### Refreshing dependencies
+
+If you get errors after a Git pull, refresh your dependencies:
+
+```
+pipenv install -d
+```
+
+### Rebuilding the virtual environment
+
+If you’ve run `pipenv install -d` and you still get errors, rebuild
+the virtual environment:
+
+```
+pipenv --rm && pipenv install -d
+```
+
 ### Checking {{ cookiecutter.project_title }}’s dependencies for vulnerabilities
 
 To check {{ cookiecutter.project_title }}’s dependencies for known vulnerabilities, run:
