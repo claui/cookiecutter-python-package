@@ -18,11 +18,12 @@ regardless of your system Python.
 
 #### Installing pyenv on Windows
 
-To install `pyenv` on Windows, run:
+While `pyenv` doesn’t support Windows, you can use a drop-in
+replacement called `pyenv-win`.
 
-```
-choco install pyenv-win
-```
+To install `pyenv-win` on Windows, go to
+[github.com/pyenv-win/pyenv-win](https://github.com/pyenv-win/pyenv-win#installation)
+and follow one of the installation methods.
 
 #### Installing pyenv on Linux
 
@@ -45,7 +46,6 @@ To verify your `pyenv` is working, run:
 ```
 pyenv --version
 ```
-
 
 ### Checking your system-wide Python installation
 
