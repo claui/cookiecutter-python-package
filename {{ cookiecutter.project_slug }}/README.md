@@ -18,11 +18,12 @@ regardless of your system Python.
 
 #### Installing pyenv on Windows
 
-To install `pyenv` on Windows, run:
+While `pyenv` doesn’t support Windows, you can use a drop-in
+replacement called `pyenv-win`.
 
-```
-choco install pyenv-win
-```
+To install `pyenv-win` on Windows, go to
+[github.com/pyenv-win/pyenv-win](https://github.com/pyenv-win/pyenv-win#installation)
+and follow one of the installation methods.
 
 #### Installing pyenv on Linux
 
@@ -46,21 +47,21 @@ To verify your `pyenv` is working, run:
 pyenv --version
 ```
 
-
 ### Checking your system-wide Python installation
 
-Make sure you have Python (any version) installed on your system.
+Make sure you have Python 3.7 or higher installed on your system
+and available in your PATH.
 
 To check, run:
 
 ```
-pip --version
+python --version
 ```
 
 If that fails, try:
 
 ```
-pip3 --version
+python3 --version
 ```
 
 Proceed after you’ve confirmed one of those to work.
@@ -79,7 +80,6 @@ Install `pipenv` as described under https://pipenv.pypa.io/en/latest/install/#in
 pipenv install -d
 ```
 
-
 ## Running {{ cookiecutter.project_title }}
 
 To execute {{ cookiecutter.project_title }}, run:
@@ -87,7 +87,6 @@ To execute {{ cookiecutter.project_title }}, run:
 ```
 pipenv run cli
 ```
-
 
 ## Contributing to {{ cookiecutter.project_title }}
 
@@ -113,6 +112,13 @@ To execute the linter, run:
 pipenv run linter
 ```
 
+### Running the static type check
+
+To execute the static type check, run:
+
+```
+pipenv run typecheck
+```
 
 ## Maintenance
 
@@ -148,7 +154,6 @@ To check {{ cookiecutter.project_title }}’s dependencies for compatible update
 ```
 pipenv update --dry-run
 ```
-
 
 ## License
 

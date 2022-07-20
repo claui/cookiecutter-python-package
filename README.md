@@ -34,7 +34,12 @@ The template allows you to specify:
 
 - a project license (Apache 2.0 or proprietary license);
 
-- a Python major/minor version; and
+- a Python major/minor version;
+
+- whether to include the `fire` package, which makes it easier to
+  develop a CLI tool;
+
+- whether to include the `jupyter` package; and
 
 - whether to include the `pandas` package.
 
@@ -54,7 +59,9 @@ The Cookiecutter template will give you:
 
 - a `Pipfile` and an initial lockfile;
 
-- a pytest script;
+- a default linter configuration;
+
+- a pytest script and default configuration;
 
 - `pipenv run` scripts for running the module scripts, tests and the
   linter;
@@ -72,6 +79,87 @@ The Cookiecutter template will give you:
 
 
 ## Using cookiecutter-python-package
+
+### System requirements
+
+To use this Cookiecutter template, you need:
+
+1. The Python version manager `pyenv`.
+
+2. A system-wide Python installation.
+
+3. The `cookiecutter` package.
+
+4. The Python dependency manager `pipenv`.
+
+### Installing pyenv
+
+You need the Python version manager `pyenv` so you can set up your
+generated package, and to make sure you can always keep that package
+up and running, regardless of your system Python.
+
+#### Installing pyenv on Windows
+
+While `pyenv` doesn’t support Windows, you can use a drop-in
+replacement called `pyenv-win`.
+
+To install `pyenv-win` on Windows, go to
+[github.com/pyenv-win/pyenv-win](https://github.com/pyenv-win/pyenv-win#installation)
+and follow one of the installation methods.
+
+#### Installing pyenv on Linux
+
+To install `pyenv` on Linux or WSL2, first make sure Python 3 is
+installed. Then follow the _Basic GitHub Checkout_ method described
+at [github.com/pyenv/pyenv](https://github.com/pyenv/pyenv#basic-github-checkout).
+
+#### Installing pyenv on macOS
+
+To install `pyenv` on macOS, run:
+
+```
+brew install pyenv
+```
+
+#### Checking your system-wide pyenv installation
+
+To verify your `pyenv` is working, run:
+
+```
+pyenv --version
+```
+
+### Checking your system-wide Python installation
+
+Make sure you have Python 3.7 or higher installed on your system
+and available in your PATH.
+
+To check, run:
+
+```
+python --version
+```
+
+If that fails, try:
+
+```
+python3 --version
+```
+
+Proceed after you’ve confirmed one of those to work.
+
+### Installing Cookiecutter
+
+To install Cookiecutter, follow Cookiecutter’s [installation
+instructions](https://cookiecutter.readthedocs.io/en/stable/installation.html).
+
+### Installing pipenv
+
+You need the Python environment manager `pipenv` so you can set up
+your generated package, and to make sure you can always keep that
+package up and running, regardless of your system Python.
+
+Install `pipenv` as described under https://pipenv.pypa.io/en/latest/install/#installing-pipenv.
 
 ### Basic usage
 
@@ -97,7 +185,6 @@ Then, to generate a project, run:
 ```
 cookiecutter python
 ```
-
 
 ## License
 

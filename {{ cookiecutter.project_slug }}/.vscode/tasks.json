@@ -90,6 +90,21 @@
         "clear": true,
         "showReuseMessage": false
       }
+    },
+    {
+      "label": "{{ cookiecutter.project_title }}: Run static type checker",
+      "type": "process",
+      "command": "pipenv",
+      "args": [
+        "run",
+        "typecheck"
+      ],
+      "problemMatcher": [],
+      "group": "test",
+      "presentation": {
+        "clear": true,
+        "showReuseMessage": false
+      }
     }
   ]
 }

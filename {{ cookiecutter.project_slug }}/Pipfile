@@ -18,12 +18,12 @@ pandas = "*"
 
 [dev-packages]
 autopep8 = "*"
-mypy = "~=0.961"
-pylint = "~=2.14"
-pytest = "*"
 {%- if cookiecutter.use_jupyter == "y" %}
 ipykernel = "*"
 {%- endif %}
+mypy = "~=0.961"
+pylint = "~=2.14"
+pytest = "*"
 
 [requires]
 python_version = "{{ cookiecutter.python_version }}"
