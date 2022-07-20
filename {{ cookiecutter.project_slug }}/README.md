@@ -120,6 +120,14 @@ To execute the static type check, run:
 pipenv run typecheck
 ```
 
+### Generating project documentation
+
+To generate project documentation and open it in your browser, run:
+
+```
+pipenv run doc
+```
+
 ## Maintenance
 
 ### Refreshing dependencies
