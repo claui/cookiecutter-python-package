@@ -55,13 +55,13 @@ and available in your PATH.
 To check, run:
 
 ```
-pip --version
+python --version
 ```
 
 If that fails, try:
 
 ```
-pip3 --version
+python3 --version
 ```
 
 Proceed after you’ve confirmed one of those to work.
