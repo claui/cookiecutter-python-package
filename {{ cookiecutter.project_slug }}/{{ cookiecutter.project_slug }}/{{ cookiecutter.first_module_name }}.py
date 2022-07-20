@@ -2,6 +2,13 @@
 
 
 def hello(name: str = 'world') -> str:
-    """Returns a greeting.
+    """Says hello to someone.
+
+    :param `name`:
+        whom to greet.
+        If left empty, we greet the `world`.
+
+    :return: a friendly Hello, addressed to `name`.
     """
+
     return f'Hello, {name}!'
