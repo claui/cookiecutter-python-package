@@ -34,7 +34,12 @@ The template allows you to specify:
 
 - a project license (Apache 2.0 or proprietary license);
 
-- a Python major/minor version; and
+- a Python major/minor version;
+
+- whether to include the `fire` package, which makes it easier to
+  develop a CLI tool;
+
+- whether to include the `jupyter` package; and
 
 - whether to include the `pandas` package.
 
@@ -54,7 +59,9 @@ The Cookiecutter template will give you:
 
 - a `Pipfile` and an initial lockfile;
 
-- a pytest script;
+- a default linter configuration;
+
+- a pytest script and default configuration;
 
 - `pipenv run` scripts for running the module scripts, tests and the
   linter;
