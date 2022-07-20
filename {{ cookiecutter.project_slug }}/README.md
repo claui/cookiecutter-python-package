@@ -79,7 +79,6 @@ Install `pipenv` as described under https://pipenv.pypa.io/en/latest/install/#in
 pipenv install -d
 ```
 
-
 ## Running {{ cookiecutter.project_title }}
 
 To execute {{ cookiecutter.project_title }}, run:
@@ -87,7 +86,6 @@ To execute {{ cookiecutter.project_title }}, run:
 ```
 pipenv run cli
 ```
-
 
 ## Contributing to {{ cookiecutter.project_title }}
 
@@ -113,6 +111,13 @@ To execute the linter, run:
 pipenv run linter
 ```
 
+### Running the static type check
+
+To execute the static type check, run:
+
+```
+pipenv run typecheck
+```
 
 ## Maintenance
 
@@ -148,7 +153,6 @@ To check {{ cookiecutter.project_title }}’s dependencies for compatible update
 ```
 pipenv update --dry-run
 ```
-
 
 ## License
 
