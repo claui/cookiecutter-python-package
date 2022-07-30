@@ -1,4 +1,4 @@
-"""This is the description of the {{ cookiecutter.first_module_name }} module."""
+"""The primary module in {{ cookiecutter.project_slug }}."""
 
 
 def hello(name: str = 'world') -> str:
