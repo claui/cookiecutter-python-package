@@ -3,7 +3,7 @@
     "editor.defaultFormatter": "vscode.json-language-features"
   },
   "files.associations": {
-    "**/{{ cookiecutter.project_slug }}/**/*.py": "jinja-py",
+    "**/?? cookiecutter.project_slug ??/**/*.py": "jinja-py",
     "**/hooks/*_gen_project.py": "jinja-py"
   },
   "files.exclude": {
