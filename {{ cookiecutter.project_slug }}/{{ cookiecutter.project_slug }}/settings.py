@@ -1,4 +1,4 @@
-"""Shared paths and settings"""
+"""A place for shared paths and settings."""
 
 from pathlib import Path
 

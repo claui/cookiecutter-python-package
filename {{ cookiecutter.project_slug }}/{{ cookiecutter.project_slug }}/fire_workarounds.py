@@ -1,4 +1,4 @@
-"""Several workarounds for known issues in our dependencies"""
+"""A collection of workarounds for known issues in our dependencies."""
 
 import colorama  # type: ignore
 import fire  # type: ignore

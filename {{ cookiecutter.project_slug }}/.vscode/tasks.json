@@ -92,6 +92,21 @@
       }
     },
     {
+      "label": "{{ cookiecutter.project_title }}: Browse documentation",
+      "type": "process",
+      "command": "pipenv",
+      "args": [
+        "run",
+        "doc"
+      ],
+      "problemMatcher": [],
+      "group": "build",
+      "presentation": {
+        "clear": true,
+        "showReuseMessage": false
+      }
+    },
+    {
       "label": "{{ cookiecutter.project_title }}: Run static type checker",
       "type": "process",
       "command": "pipenv",

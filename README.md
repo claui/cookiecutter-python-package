@@ -63,6 +63,8 @@ The Cookiecutter template will give you:
 
 - a pytest script and default configuration;
 
+- a `pdoc` setup to generate documentation;
+
 - `pipenv run` scripts for running the module scripts, tests and the
   linter;
 
@@ -76,7 +78,6 @@ The Cookiecutter template will give you:
 - an `.editorconfig` file; and
 
 - settings for Visual Studio Code integration.
-
 
 ## Using cookiecutter-python-package
 

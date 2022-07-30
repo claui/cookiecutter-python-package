@@ -28,7 +28,7 @@ and follow one of the installation methods.
 #### Installing pyenv on Linux
 
 To install `pyenv` on Linux or WSL2, first make sure Python 3 is
-installed. Then follow the _Basic GitHub Checkout_ method described
+installed. Then follow the *Basic GitHub Checkout* method described
 at [github.com/pyenv/pyenv](https://github.com/pyenv/pyenv#basic-github-checkout).
 
 #### Installing pyenv on macOS
@@ -118,6 +118,14 @@ To execute the static type check, run:
 
 ```
 pipenv run typecheck
+```
+
+### Generating project documentation
+
+To generate project documentation and open it in your browser, run:
+
+```
+pipenv run doc
 ```
 
 ## Maintenance
