@@ -17,8 +17,6 @@
 *.diff          text eol=lf
 *.patch         text eol=lf
 
-Pipfile*        text eol=lf
-
 # LF required to allow shell scripts to run
 /.shims/*       text eol=lf
 
@@ -28,4 +26,5 @@ Pipfile*        text eol=lf
 *.json          text eol=lf
 *.md            text eol=lf
 *.py            text eol=lf
+*.toml          text eol=lf
 *.txt           text eol=lf

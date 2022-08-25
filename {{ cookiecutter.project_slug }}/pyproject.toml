@@ -1,0 +1,64 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "{{ cookiecutter.project_slug }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_description }}"
+authors = [
+    "{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>",
+]
+license = "{{ cookiecutter.project_license }}"
+
+[tool.poetry.dependencies]
+python = "~{{ cookiecutter.python_version }}"
+{%- if cookiecutter.use_fire == "y" %}
+colorama = "*"
+{%- endif %}
+dataclass-wizard = "~=0.22"
+{%- if cookiecutter.use_fire == "y" %}
+fire = "*"
+{%- endif %}
+{%- if cookiecutter.use_pandas == "y" %}
+pandas = "*"
+{%- endif %}
+
+[tool.poetry.dev-dependencies]
+autopep8 = "*"
+{%- if cookiecutter.use_jupyter == "y" %}
+ipykernel = "*"
+{%- endif %}
+mypy = "~=0.971"
+pdoc = "~=12.1"
+poethepoet = "~=0.16"
+pylint = "~=2.14"
+pytest = "*"
+{%- if cookiecutter.use_fire == "y" %}
+types-colorama = "*"
+{%- endif %}
+
+[tool.poe]
+verbosity = -1
+
+[tool.poe.tasks]
+tasks.cmd = "poe -v"
+tasks.help = "List available tasks"
+{%- if cookiecutter.use_fire == "y" %}
+cli.script = "{{ cookiecutter.project_slug }}.cli:run"
+cli.help = "Run command line interface"
+{%- endif %}
+doc.cmd = "pdoc {{ cookiecutter.project_slug }} !{{ cookiecutter.project_slug }}.settings"
+doc.help = "Browse documentation"
+{%- if cookiecutter.use_fire == "y" %}
+hello.script = "{{ cookiecutter.project_slug }}.cli:run('hello')"
+{%- else %}
+hello.script = "{{ cookiecutter.project_slug }}.cli:run"
+{%- endif %}
+hello.help = "Run hello"
+linter.cmd = "pylint --enable-all-extensions {{ cookiecutter.project_slug }}"
+linter.help = "Check for style violations"
+tests.cmd = "pytest"
+tests.help = "Run test suite"
+typecheck.cmd = "mypy"
+typecheck.help = "Run static type checker"

@@ -2,6 +2,7 @@
   "recommendations": [
     "editorconfig.editorconfig",
     "ms-python.python",
-    "samuelcolvin.jinjahtml"
+    "samuelcolvin.jinjahtml",
+    "tamasfe.even-better-toml"
   ]
 }

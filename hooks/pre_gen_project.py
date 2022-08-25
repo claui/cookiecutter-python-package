@@ -15,11 +15,10 @@ if '{{ cookiecutter.project_slug }}' \
         == '{{ cookiecutter.first_module_name }}':
     sys.exit('Project slug and first module name cannot be the same')
 
-if not shutil.which('pipenv'):
+if not shutil.which('poetry'):
     sys.exit(
         """
-This Cookiecutter template depends on pipenv.
-For instructions on how to install pipenv, see:
-https://pipenv.pypa.io/en/latest/install/#installing-pipenv
+This Cookiecutter template depends on Poetry.
+For instructions on how to install Poetry, see `README.md`.
 """
     )

@@ -8,7 +8,7 @@ To set up {{ cookiecutter.project_title }}, you need three things:
 
 2. A system-wide Python installation.
 
-3. The Python dependency manager `pipenv`.
+3. The Python dependency manager `poetry`.
 
 ### Installing pyenv
 
@@ -66,26 +66,61 @@ python3 --version
 
 Proceed after you’ve confirmed one of those to work.
 
-### Installing pipenv
+### Installing Poetry
 
-Install `pipenv` as described under https://pipenv.pypa.io/en/latest/install/#installing-pipenv.
+You’ll need `poetry` to manage development dependencies and the venv.
 
-### Finishing up the project setup
+To install Poetry on Windows, use one of the
+[installation methods](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
+described in Poetry’s documentation.
 
-- Go to the {{ cookiecutter.project_slug }} directory.
-
-- Run the following command:
+To install Poetry on macOS, run:
 
 ```
-pipenv install -d
+brew install poetry
 ```
+
+If you’re on Linux or WSL2, use your system package manager to
+install Poetry.
+
+Alternatively, use one of the
+[installation methods](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
+described in Poetry’s documentation.
+
+#### Checking your Poetry installation
+
+To verify Poetry is working, run:
+
+```
+poetry --version
+```
+
+### Setting up your virtual environment
+
+To set up your virtual environment, follow these steps:
+
+1. Go to the project root directory.
+
+2. Run `pyenv install -s`.
+
+3. Run `pyenv exec pip install poetry`.
+
+4. Run `pyenv exec poetry install`.
+
+You need to do the above steps only once.
+
+To update your dependencies after a `git pull`, run `poetry update`.
+
+## Development scripts and tasks
+
+To see a list of available tasks, run: `poetry run poe tasks`
 
 ## Running {{ cookiecutter.project_title }}
 
 To execute {{ cookiecutter.project_title }}, run:
 
 ```
-pipenv run cli
+poetry run poe cli
 ```
 
 ## Contributing to {{ cookiecutter.project_title }}
@@ -95,13 +130,13 @@ pipenv run cli
 To execute the tests, run:
 
 ```
-pipenv run tests
+poetry run poe tests
 ```
 
 To execute a single test, run e. g.:
 
 ```
-pipenv run tests -vv tests/test_{{ cookiecutter.first_module_name }}.py::test_hello
+poetry run poe tests -vv tests/test_{{ cookiecutter.first_module_name }}.py::test_hello
 ```
 
 ### Running the linter
@@ -109,7 +144,7 @@ pipenv run tests -vv tests/test_{{ cookiecutter.first_module_name }}.py::test_he
 To execute the linter, run:
 
 ```
-pipenv run linter
+poetry run poe linter
 ```
 
 ### Running the static type check
@@ -117,7 +152,7 @@ pipenv run linter
 To execute the static type check, run:
 
 ```
-pipenv run typecheck
+poetry run poe typecheck
 ```
 
 ### Generating project documentation
@@ -125,7 +160,7 @@ pipenv run typecheck
 To generate project documentation and open it in your browser, run:
 
 ```
-pipenv run doc
+poetry run poe doc
 ```
 
 ## Maintenance
@@ -135,16 +170,16 @@ pipenv run doc
 If you get errors after a Git pull, refresh your dependencies:
 
 ```
-pipenv install -d
+poetry update
 ```
 
 ### Rebuilding the virtual environment
 
-If you’ve run `pipenv install -d` and you still get errors, rebuild
+If you’ve run `poetry update` and you still get errors, rebuild
 the virtual environment:
 
 ```
-pipenv --rm && pipenv install -d
+poetry install
 ```
 
 ### Checking {{ cookiecutter.project_title }}’s dependencies for vulnerabilities
@@ -152,7 +187,7 @@ pipenv --rm && pipenv install -d
 To check {{ cookiecutter.project_title }}’s dependencies for known vulnerabilities, run:
 
 ```
-pipenv check
+poetry run poe check
 ```
 
 ### Checking {{ cookiecutter.project_title }}’s dependencies for compatible updates
@@ -160,7 +195,7 @@ pipenv check
 To check {{ cookiecutter.project_title }}’s dependencies for compatible updates, run:
 
 ```
-pipenv update --dry-run
+poetry update --dry-run
 ```
 
 ## License

@@ -1,6 +1,6 @@
 """A collection of workarounds for known issues in our dependencies."""
 
-import colorama  # type: ignore
+import colorama
 import fire  # type: ignore
 
 

@@ -26,11 +26,13 @@ for Python projects with a focus on:
 
 The template allows you to specify:
 
-- project title, slug and version;
+- project title, slug, description and version;
 
 - a name for the first module;
 
 - both an author name and a copyright holder name;
+
+- the author’s email address;
 
 - a project license (Apache 2.0 or proprietary license);
 
@@ -57,7 +59,7 @@ The Cookiecutter template will give you:
 
 - a global settings file that all modules can import;
 
-- a `Pipfile` and an initial lockfile;
+- a `pyproject.toml` file and an initial Poetry lockfile;
 
 - a default linter configuration;
 
@@ -65,8 +67,8 @@ The Cookiecutter template will give you:
 
 - a `pdoc` setup to generate documentation;
 
-- `pipenv run` scripts for running the module scripts, tests and the
-  linter;
+- a set of `poe` tasks for running the module scripts, tests and the
+  linter (for details, run `poetry run poe tasks`);
 
 - a virtual environment with initial dependencies installed and
   ready to use;
@@ -91,7 +93,7 @@ To use this Cookiecutter template, you need:
 
 3. The `cookiecutter` package.
 
-4. The Python dependency manager `pipenv`.
+4. The Python dependency manager `poetry`.
 
 ### Installing pyenv
 
@@ -154,13 +156,34 @@ Proceed after you’ve confirmed one of those to work.
 To install Cookiecutter, follow Cookiecutter’s [installation
 instructions](https://cookiecutter.readthedocs.io/en/stable/installation.html).
 
-### Installing pipenv
+### Installing Poetry
 
-You need the Python environment manager `pipenv` so you can set up
-your generated package, and to make sure you can always keep that
-package up and running, regardless of your system Python.
+You’ll need `poetry` to manage development dependencies and the venv.
 
-Install `pipenv` as described under https://pipenv.pypa.io/en/latest/install/#installing-pipenv.
+To install Poetry on Windows, use one of the
+[installation methods](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
+described in Poetry’s documentation.
+
+To install Poetry on macOS, run:
+
+```
+brew install poetry
+```
+
+If you’re on Linux or WSL2, use your system package manager to
+install Poetry.
+
+Alternatively, use one of the
+[installation methods](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
+described in Poetry’s documentation.
+
+#### Checking your Poetry installation
+
+To verify Poetry is working, run:
+
+```
+poetry --version
+```
 
 ### Basic usage
 
@@ -189,7 +212,7 @@ cookiecutter python
 
 ## License
 
-Copyright (c) 2021 Claudia Pellegrino <clau@tiqua.de>
+Copyright (c) 2021 – 2022 Claudia Pellegrino <clau@tiqua.de>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

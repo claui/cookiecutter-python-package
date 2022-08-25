@@ -2,6 +2,7 @@
   "recommendations": [
     "be5invis.toml",
     "editorconfig.editorconfig",
-    "ms-python.python"
+    "ms-python.python",
+    "tamasfe.even-better-toml"
   ]
 }
