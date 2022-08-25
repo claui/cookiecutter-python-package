@@ -1,1 +1,1 @@
-@pipenv run python -m pylint %*
+@poetry run python -m pylint %*

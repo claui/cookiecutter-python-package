@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-exec pipenv run python -m "${0##*/}" "$@"
+exec poetry run python -m "${0##*/}" "$@"

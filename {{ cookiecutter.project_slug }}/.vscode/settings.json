@@ -1,7 +1,16 @@
 {
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[toml]": {
+    "editor.defaultFormatter": "tamasfe.even-better-toml"
+  },
   "code-runner.clearPreviousOutput": true,
   "code-runner.executorMap": {
-    "python": "pipenv run python",
+    "python": "poetry run python",
   },
   "code-runner.ignoreSelection": true,
   "code-runner.saveFileBeforeRun": true,
@@ -18,7 +27,7 @@
     "**/*.egg-info": true,
     "**/__pycache__": true
   },
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv",
+  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/",
   "python.linting.enabled": true,
   "python.linting.pylintArgs": [
     "--enable-all-extensions"
@@ -26,12 +35,10 @@
   "python.linting.pylintCategorySeverity.refactor": "Warning",
   "python.linting.pylintEnabled": true,
   "python.linting.pylintPath": "${workspaceFolder}/.shims/pylint.SHIM_EXT",
-  "python.pythonPath": "${workspaceFolder}/.venv",
   "python.testing.pytestArgs": [
     "tests"
   ],
   "python.testing.unittestEnabled": false,
-  "python.testing.nosetestsEnabled": false,
   "python.testing.pytestEnabled": true,
   "workbench.editor.decorations.badges": false,
   "workbench.editor.decorations.colors": false,

@@ -3,7 +3,6 @@ import platform
 import shutil
 import subprocess
 
-os.unlink('.venv/.keep')
 shutil.rmtree('licenses')
 
 # Pick platform-dependent pylint shim
@@ -21,24 +20,22 @@ os.unlink('{{ cookiecutter.project_slug }}/fire_workarounds.py')
 {%- endif %}
 
 {%- if cookiecutter.install_dependencies_now == "y" %}
-pipenv_environment = os.environ.copy()
-pipenv_environment.update({
-    'LANG': pipenv_environment.get('LANG', 'en_US.UTF-8'),
-    'PIPENV_IGNORE_VIRTUALENVS': '1',
-    'SYSTEM_VERSION_COMPAT': '1',
+poetry_environment = os.environ.copy()
+poetry_environment.update({
+    'LANG': poetry_environment.get('LANG', 'en_US.UTF-8'),
 })
 
-print('Running pipenv. This may take a while.')
+print('Running poetry. This may take a while.')
 try:
     subprocess.run(
-        'pipenv install -d',
-        env=pipenv_environment,
+        'poetry install',
+        env=poetry_environment,
         check=True,
         shell=True,
     )
 except subprocess.CalledProcessError as e:
     print(
-        f'Pipenv failed with exit code {e.returncode}.',
+        f'Poetry failed with exit code {e.returncode}.',
         'Fix any issues, then go to the '
         '{{ cookiecutter.project_slug }} directory and re-run:',
         f'    {e.cmd}',

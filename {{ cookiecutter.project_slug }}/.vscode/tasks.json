@@ -7,9 +7,10 @@
     {
       "label": "{{ cookiecutter.project_title }}: Show usage help",
       "type": "shell",
-      "command": "pipenv",
+      "command": "poetry",
       "args": [
         "run",
+        "poe",
         "cli"
       ],
       "problemMatcher": [],
@@ -23,13 +24,11 @@
     {
       "label": "{{ cookiecutter.project_title }}: Run hello",
       "type": "shell",
-      "command": "pipenv",
+      "command": "poetry",
       "args": [
         "run",
-        "cli"
-        {%- if cookiecutter.use_fire == "y" %},
+        "poe",
         "hello"
-        {%- endif %}
       ],
       "problemMatcher": [],
       "group": {
@@ -44,19 +43,12 @@
     {
       "label": "{{ cookiecutter.project_title }}: Run hello '{{ cookiecutter.author_full_name }}'",
       "type": "shell",
-      "command": "pipenv",
+      "command": "poetry",
       "args": [
         "run",
-        {%- if cookiecutter.use_fire == "y" %}
-        "cli",
+        "poe",
         "hello",
         "{{ cookiecutter.author_full_name }}"
-        {%- else %}
-        "python",
-        "-c",
-        "import sys; import {{ cookiecutter.project_slug }}; print({{ cookiecutter.project_slug }}.hello(sys.argv[-1]))",
-        "{{ cookiecutter.author_full_name }}"
-        {%- endif %}
       ],
       "problemMatcher": [],
       "group": "build",
@@ -68,22 +60,10 @@
     {
       "label": "{{ cookiecutter.project_title }}: Install/update local dependencies",
       "type": "shell",
-      "command": "pipenv",
+      "command": "poetry",
       "args": [
-        "install",
-        "-d"
+        "update"
       ],
-      "problemMatcher": [],
-      "group": "build",
-      "presentation": {
-        "clear": true,
-        "showReuseMessage": false
-      }
-    },
-    {
-      "label": "{{ cookiecutter.project_title }}: Recreate the virtual environment",
-      "type": "shell",
-      "command": "pipenv --rm; pipenv install -d",
       "problemMatcher": [],
       "group": "build",
       "presentation": {
@@ -94,9 +74,10 @@
     {
       "label": "{{ cookiecutter.project_title }}: Browse documentation",
       "type": "process",
-      "command": "pipenv",
+      "command": "poetry",
       "args": [
         "run",
+        "poe",
         "doc"
       ],
       "problemMatcher": [],
@@ -109,9 +90,10 @@
     {
       "label": "{{ cookiecutter.project_title }}: Run static type checker",
       "type": "process",
-      "command": "pipenv",
+      "command": "poetry",
       "args": [
         "run",
+        "poe",
         "typecheck"
       ],
       "problemMatcher": [],
