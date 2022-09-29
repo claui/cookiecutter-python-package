@@ -21,5 +21,6 @@ def run(*args: str) -> None:
     }, command=list(args) + sys.argv[1:]
     )
 {%- else %}
-    print({{ cookiecutter.first_module_name }}.hello(*args, *sys.argv[1:]))
+    combined_args = list(args) + sys.argv[1:]
+    print({{ cookiecutter.first_module_name }}.hello(*combined_args[:1]))
 {%- endif %}
