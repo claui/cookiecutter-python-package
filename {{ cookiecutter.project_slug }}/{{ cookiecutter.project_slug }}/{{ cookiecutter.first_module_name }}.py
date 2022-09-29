@@ -15,6 +15,6 @@ def hello(name: str = 'world') -> str:
     """
 
     if not name:
-        raise ValueError("Name cannot be empty.")
+        raise ValueError('Name cannot be empty.')
 
     return f'Hello, {name}!'
