@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/{{ cookiecutter.package_name }}/
+*.log
+*.pkg.*
+*.tar.*

@@ -1,7 +1,7 @@
 # Maintainer: {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>
 
-pkgname={{ cookiecutter.package_name }}
-pkgver={{ cookiecutter.project_version }}
+pkgname={{ cookiecutter.package_name }}-git
+pkgver=VERSION
 pkgrel=1
 pkgdesc='{{ cookiecutter.project_description }}'
 arch=('any')
@@ -9,35 +9,44 @@ url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.packa
 license=('{{ cookiecutter.pkgbuild_license }}')
 depends=()
 makedepends=(
+  'git'
   'python-build'
   'python-installer'
   'python-poetry-core'
   'python-wheel'
 )
 checkdepends=('python-pytest')
-conflicts=('{{ cookiecutter.package_name }}-git')
+provides=('{{ cookiecutter.package_name }}')
+conflicts=('{{ cookiecutter.package_name }}')
 options=('!strip')
 
 source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}/archive/v${pkgver}.tar.gz"
+  "${pkgname}::git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}.git"
 )
 
 sha512sums=(
-  '00000000'
+  'SKIP'
 )
 
+pkgver() {
+  printf "%s.r%s.%s" \
+    "$(poetry version -s)" \
+    "$(git -C "${pkgname}" rev-list --count HEAD)" \
+    "$(git -C "${pkgname}" rev-parse --short HEAD)"
+}
+
 build() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
   python -m pytest
 }
 
 package() {
-  cd "${srcdir}/${pkgname}-${pkgver}"
+  cd "${srcdir}/${pkgname}"
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" dist/*.whl
