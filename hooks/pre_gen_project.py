@@ -3,7 +3,7 @@
 {%
     set pkgbuild_license_dict = {
         "Apache-2.0": "Apache",
-        "Proprietary": "custom"
+        "Proprietary": "custom",
     }
 %}
 {{
