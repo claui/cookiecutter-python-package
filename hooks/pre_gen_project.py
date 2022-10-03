@@ -1,3 +1,21 @@
+"""
+{# See https://wiki.archlinux.org/title/PKGBUILD#license #}
+{%
+    set pkgbuild_license_dict = {
+        "Apache-2.0": "Apache",
+        "Proprietary": "custom"
+    }
+%}
+{{
+    cookiecutter.update({
+        "package_name":
+            cookiecutter.project_slug.replace('_', '-'),
+        "pkgbuild_license":
+            pkgbuild_license_dict[cookiecutter.project_version]
+    })
+}}
+"""
+
 import shutil
 import sys
 
