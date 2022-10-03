@@ -11,7 +11,7 @@
         "package_name":
             cookiecutter.project_slug.replace('_', '-'),
         "pkgbuild_license":
-            pkgbuild_license_dict[cookiecutter.project_version]
+            pkgbuild_license_dict[cookiecutter.project_license],
     })
 }}
 """
