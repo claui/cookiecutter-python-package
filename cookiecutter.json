@@ -9,6 +9,8 @@
   "author_full_name": "",
   "author_email": "",
   "copyright_holder_full_name": "{{ cookiecutter.author_full_name }}",
+  "include_executable": "y",
+  "executable_name": "{{ cookiecutter.project_slug.replace('_', '-') }}",
   "use_fire": "n",
   "use_jupyter": "n",
   "use_pandas": "n",

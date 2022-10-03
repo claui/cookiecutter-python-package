@@ -38,6 +38,11 @@ pytest = "*"
 types-colorama = "*"
 {%- endif %}
 
+{% if cookiecutter.include_executable == "y" -%}
+[tool.poetry.scripts]
+{{ cookiecutter.executable_name }} = "{{ cookiecutter.project_slug }}.cli:run"
+{%- endif -%}
+
 [tool.poe]
 verbosity = -1
 
