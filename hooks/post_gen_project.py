@@ -23,6 +23,8 @@ os.unlink('{{ cookiecutter.project_slug }}/fire_workarounds.py')
 poetry_environment = os.environ.copy()
 poetry_environment.update({
     'LANG': poetry_environment.get('LANG', 'en_US.UTF-8'),
+    # https://github.com/python-poetry/poetry/issues/1917
+    'PYTHON_KEYRING_BACKEND': 'keyring.backends.null.Keyring',
 })
 
 print('Running poetry. This may take a while.')
