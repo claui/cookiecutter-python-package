@@ -27,13 +27,12 @@
     "**/*.egg-info": true,
     "**/__pycache__": true
   },
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/",
   "python.linting.pylintArgs": [
     "--enable-all-extensions"
   ],
   "python.linting.pylintCategorySeverity.refactor": "Warning",
   "python.linting.pylintEnabled": true,
-  "python.linting.pylintPath": "${workspaceFolder}/.shims/pylint.SHIM_EXT",
+  "python.linting.pylintPath": "pylint",
   "python.testing.pytestArgs": [
     "tests"
   ],
