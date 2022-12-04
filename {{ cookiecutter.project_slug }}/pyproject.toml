@@ -67,3 +67,7 @@ tests.cmd = "pytest"
 tests.help = "Run test suite"
 typecheck.cmd = "mypy"
 typecheck.help = "Run static type checker"
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+xfail_strict = true
