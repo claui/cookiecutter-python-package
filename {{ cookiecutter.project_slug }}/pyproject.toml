@@ -68,6 +68,9 @@ tests.help = "Run test suite"
 typecheck.cmd = "mypy"
 typecheck.help = "Run static type checker"
 
+[tool.pyright]
+reportUnsupportedDunderAll = "none"
+
 [tool.pytest.ini_options]
 testpaths = "tests"
 xfail_strict = true

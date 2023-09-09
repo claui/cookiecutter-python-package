@@ -1,4 +1,4 @@
-# pylint: disable=missing-function-docstring, missing-module-docstring, no-self-use, too-many-public-methods
+# pylint: disable=magic-value-comparison, missing-function-docstring, missing-module-docstring, no-self-use, too-many-public-methods
 
 from {{ cookiecutter.project_slug }} import hello
 

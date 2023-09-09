@@ -10,7 +10,7 @@ def __fire_suppress_pager() -> None:
     See also:
     https://github.com/google/python-fire/issues/188#issuecomment-631419585
     """
-    fire.core.Display = lambda lines, out: print(*lines, file=out)
+    fire.core.Display = lambda lines, out: print(*lines, file=out)  # pyright: ignore
 
 
 def __vscode_code_runner_fix_colors() -> None:
