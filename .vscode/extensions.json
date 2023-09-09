@@ -1,6 +1,10 @@
 {
   "recommendations": [
+    "claui.packaging",
     "editorconfig.editorconfig",
+    "ms-python.black-formatter",
+    "ms-python.mypy-type-checker",
+    "ms-python.pylint",
     "ms-python.python",
     "samuelcolvin.jinjahtml",
     "tamasfe.even-better-toml"
