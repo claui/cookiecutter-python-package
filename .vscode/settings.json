@@ -21,5 +21,7 @@
   "files.exclude": {
     "**/.git": true
   },
-  "python.linting.pylintEnabled": true
+  "pylint.args": [
+    "--enable-all-extensions"
+  ]
 }
