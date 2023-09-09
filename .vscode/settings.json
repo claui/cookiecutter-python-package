@@ -5,6 +5,9 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
@@ -18,5 +21,7 @@
   "files.exclude": {
     "**/.git": true
   },
-  "python.linting.pylintEnabled": true
+  "pylint.args": [
+    "--enable-all-extensions"
+  ]
 }

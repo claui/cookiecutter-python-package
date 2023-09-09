@@ -29,10 +29,10 @@ autopep8 = "*"
 {%- if cookiecutter.use_jupyter == "y" %}
 ipykernel = "*"
 {%- endif %}
-mypy = "~=0.982"
-pdoc = "~=12.2"
-poethepoet = "~=0.16"
-pylint = "~=2.15"
+mypy = "~=0.991"
+pdoc = "~=12.3"
+poethepoet = "~=0.22"
+pylint = "~=2.17"
 pytest = "*"
 {%- if cookiecutter.use_fire == "y" %}
 types-colorama = "*"
@@ -67,6 +67,9 @@ tests.cmd = "pytest"
 tests.help = "Run test suite"
 typecheck.cmd = "mypy"
 typecheck.help = "Run static type checker"
+
+[tool.pyright]
+reportUnsupportedDunderAll = "none"
 
 [tool.pytest.ini_options]
 testpaths = "tests"
