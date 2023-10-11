@@ -155,6 +155,17 @@ To execute the static type check, run:
 poetry run poe typecheck
 ```
 
+### Running the entire CI pipeline locally
+
+If you have [act](https://github.com/nektos/act) installed, run:
+
+```sh
+act --container-options "-v act-toolcache:/opt/hostedtoolcache"
+```
+
+See also
+issue [nektos/act#1987](https://github.com/nektos/act/issues/1987).
+
 ### Generating project documentation
 
 To generate project documentation and open it in your browser, run:

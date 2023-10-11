@@ -6,6 +6,7 @@
     "ms-python.mypy-type-checker",
     "ms-python.pylint",
     "ms-python.python",
+    "redhat.vscode-yaml",
     "samuelcolvin.jinjahtml",
     "tamasfe.even-better-toml"
   ]
