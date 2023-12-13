@@ -3,7 +3,7 @@ name: Run CI
 on: [push]
 
 env:
-  CI_POETRY_VERSION: '1.6.1'
+  CI_POETRY_VERSION: '1.7.1'
 
 jobs:
   build:
