@@ -1,0 +1,40 @@
+name: Build package distribution
+
+on:
+  workflow_call:
+    inputs:
+      ref:
+        description: |-
+          The branch, tag or SHA to checkout.
+        type: string
+        required: true
+
+jobs:
+  build-dist:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out source tree
+        uses: actions/checkout@v4
+        with:
+          ref: {{ '${{' }} inputs.ref }}
+
+      - name: Use specified Python version
+        uses: actions/setup-python@v5
+        with:
+          python-version-file: .python-version
+
+      - name: Install pypa/build
+        run: |
+          python -m pip install --disable-pip-version-check \
+            --no-color --no-input --user \
+            build
+
+      - name: Build wheel and source tarball
+        run: python -m build
+
+      - name: Upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+          if-no-files-found: error
