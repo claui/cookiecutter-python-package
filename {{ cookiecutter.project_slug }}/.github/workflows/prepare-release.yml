@@ -1,0 +1,173 @@
+name: Manually run this to prepare a release
+
+on:
+  workflow_dispatch:
+    inputs:
+      target_version:
+        description: |-
+          New version number for the release (or a Poetry bump rule)
+        required: true
+
+env:
+  CI_POETRY_VERSION: "1.7.1"
+
+jobs:
+  bump-version:
+    runs-on: ubuntu-22.04
+    outputs:
+      new_version: {{ '${{' }} steps.gather_new_version.outputs.new_version }}
+    steps:
+      - name: Check out source tree
+        uses: actions/checkout@v4
+
+      - name: Load cached Poetry installation
+        id: load-cached-poetry
+        uses: actions/cache@v4
+        with:
+          path: ~/.local
+          key: poetry-release-v{{ '${{' }} env.CI_POETRY_VERSION }}
+
+      - name: Update PATH
+        if: steps.load-cached-poetry.outputs.cache-hit == 'true'
+        run: |
+          echo ~/.local/bin >> "${GITHUB_PATH}"
+
+      - name: Install Poetry
+        uses: snok/install-poetry@v1
+        if: steps.load-cached-poetry.outputs.cache-hit != 'true'
+        with:
+          version: {{ '${{' }} env.CI_POETRY_VERSION }}
+          virtualenvs-create: true
+          virtualenvs-in-project: true
+
+      - name: Print current package version
+        run: poetry version --no-ansi --no-interaction
+
+      - name: Bump package version
+        env:
+          TARGET_VERSION: {{ '${{' }} inputs.target_version }}
+        run: poetry version --no-ansi --no-interaction "${TARGET_VERSION}"
+
+      - id: gather_new_version
+        name: Gather bumped package version
+        run: |
+          env -i >> "${GITHUB_OUTPUT}" \
+            "new_version=$(poetry version --no-ansi --no-interaction --short)"
+
+      - name: Print bumped package version
+        env:
+          NEW_VERSION: {{ '${{' }} steps.gather_new_version.outputs.new_version }}
+        run: |
+          echo "New package version: ${NEW_VERSION}"
+
+      # Workaround for https://github.com/actions/runner/issues/667
+      # See also:
+      # https://gist.github.com/swinton/03e84635b45c78353b1f71e41007fc7c
+      - name: Commit bumped package version
+        env:
+          GITHUB_TOKEN: {{ '${{' }} github.token }}
+          FILE_TO_COMMIT: pyproject.toml
+          NEW_VERSION: {{ '${{' }} steps.gather_new_version.outputs.new_version }}
+          RELEASE_BRANCH: release/{{ '${{' }} steps.gather_new_version.outputs.new_version }}
+        run: |
+          set -ex
+          MESSAGE="Bump version to ${NEW_VERSION}"
+          BASE_REF_SHA="$(git rev-parse @)"
+          OBJECT_SHA=$(git rev-parse ":${FILE_TO_COMMIT}")
+          gh api --method POST '/repos/:owner/:repo/git/refs' \
+            -H 'Accept: application/vnd.github+json' \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            --field ref="refs/heads/${RELEASE_BRANCH}" \
+            --field sha="${BASE_REF_SHA}"
+          gh api --method PUT "/repos/:owner/:repo/contents/${FILE_TO_COMMIT}" \
+            -H 'Accept: application/vnd.github+json' \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            --field message="${MESSAGE}" \
+            --field content=@<(base64 -i "${FILE_TO_COMMIT}") \
+            --field branch="${RELEASE_BRANCH}" \
+            --field sha="${OBJECT_SHA}"
+
+  build-dist:
+    needs: bump-version
+    uses: ./.github/workflows/build-dist.yml
+    with:
+      ref: release/{{ '${{' }} needs.bump-version.outputs.new_version }}
+
+  publish-testpypi:
+    needs: build-dist
+    runs-on: ubuntu-22.04
+    environment:
+      name: testpypi
+      url: https://test.pypi.org/p/{{ cookiecutter.project_slug }}
+    permissions:
+      id-token: write
+    steps:
+      - name: Download the distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+      - name: Publish to TestPyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          repository-url: https://test.pypi.org/legacy/
+
+      - name: Sign the distributions
+        uses: sigstore/gh-action-sigstore-python@v2.1.1
+        with:
+          inputs: >-
+            dist/*.tar.gz
+            dist/*.whl
+
+  create-pr:
+    needs:
+      - bump-version
+      - publish-testpypi
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out source tree
+        uses: actions/checkout@v4
+        with:
+          ref: release/{{ '${{' }} needs.bump-version.outputs.new_version }}
+
+      - name: Create pull request
+        env:
+          DEFAULT_BRANCH: {{ '${{' }} github.event.repository.default_branch }}
+          GITHUB_TOKEN: {{ '${{' }} github.token }}
+          NEW_VERSION: {{ '${{' }} needs.bump-version.outputs.new_version }}
+          RELEASE_BRANCH: release/{{ '${{' }} needs.bump-version.outputs.new_version }}
+        run: |
+          set -ex
+          MESSAGE="Prepare v${NEW_VERSION} release"
+          gh api --method POST '/repos/:owner/:repo/pulls' \
+            -H 'Accept: application/vnd.github+json' \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            --field title="${MESSAGE}" \
+            --field head="${RELEASE_BRANCH}" \
+            --field base="${DEFAULT_BRANCH}" \
+            --field body='Merging this PR will publish a PyPI package'`
+              `' based on the `'"${RELEASE_BRANCH}"'` branch and'`
+              `' create a draft release on GitHub.' \
+            > "${HOME}/create_pr_response.json"
+          env -i >> "${GITHUB_ENV}" \
+            "PR_NUMBER=$(jq -r '.number' "${HOME}/create_pr_response.json")"
+
+      - name: Add label to pull request
+        env:
+          GITHUB_TOKEN: {{ '${{' }} github.token }}
+        run: |
+          set -ex
+          gh api --method POST \
+            -H 'Accept: application/vnd.github+json' \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "/repos/:owner/:repo/labels" \
+            --field name='auto-release' \
+            --field description='Will create tag and release on merge' \
+            --field color='7f0000' \
+            || true
+          gh api --method POST \
+            -H 'Accept: application/vnd.github+json' \
+            -H 'X-GitHub-Api-Version: 2022-11-28' \
+            "/repos/:owner/:repo/issues/${PR_NUMBER}/labels" \
+            --field 'labels[]=auto-release'

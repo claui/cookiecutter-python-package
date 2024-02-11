@@ -1,29 +1,31 @@
-name: Run CI
+name: Run CI checks
 
-on: [push]
+on:
+  - push
+  - workflow_call
 
 env:
-  CI_POETRY_VERSION: '1.7.1'
+  CI_POETRY_VERSION: "1.7.1"
 
 jobs:
-  build:
+  ci-checks:
     runs-on: ubuntu-22.04
 
     steps:
       - name: Check out source tree
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Load cached Poetry installation
         id: load-cached-poetry
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.local
           key: poetry-release-v{{ '${{' }} env.CI_POETRY_VERSION }}
 
       - name: Update PATH
         if: steps.load-cached-poetry.outputs.cache-hit == 'true'
-        run: |-
-          echo ~/.local/bin >> ${GITHUB_PATH}
+        run: |
+          echo ~/.local/bin >> "${GITHUB_PATH}"
 
       - name: Install Poetry
         uses: snok/install-poetry@v1
@@ -33,8 +35,11 @@ jobs:
           virtualenvs-create: true
           virtualenvs-in-project: true
 
+      - name: Print current package version
+        run: poetry version --no-ansi --no-interaction
+
       - name: Use specified Python version
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           cache: poetry
           python-version-file: .python-version

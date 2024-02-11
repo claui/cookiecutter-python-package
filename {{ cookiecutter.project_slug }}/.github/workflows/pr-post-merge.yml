@@ -1,0 +1,61 @@
+name: PR post-merge
+
+on:
+  pull_request_target:
+    types: [closed]
+
+jobs:
+  ci-checks:
+    if: github.event.pull_request.merged == true
+    uses: ./.github/workflows/ci.yml
+
+  build-dist:
+    if: github.event.pull_request.merged == true
+    needs: ci-checks
+    uses: ./.github/workflows/build-dist.yml
+    with:
+      ref: {{ '${{' }} github.sha }}
+
+  publish-release:
+    if: >-
+      github.event.pull_request.merged == true
+      && contains(github.event.pull_request.labels.*.name, 'auto-release')
+      && startsWith(github.head_ref, 'release/')
+    needs: build-dist
+    runs-on: ubuntu-22.04
+    environment:
+      name: pypi
+      url: https://pypi.org/p/{{ cookiecutter.project_slug }}
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: Download the distributions
+        uses: actions/download-artifact@v4
+        with:
+          name: python-package-distributions
+          path: dist/
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+
+      - name: Sign the distributions
+        uses: sigstore/gh-action-sigstore-python@v2.1.1
+        with:
+          inputs: >-
+            dist/*.tar.gz
+            dist/*.whl
+
+      - name: Create draft release
+        env:
+          GITHUB_TOKEN: {{ '${{' }} github.token }}
+          RELEASE_BRANCH: {{ '${{' }} github.head_ref }}
+          REPOSITORY: {{ '${{' }} github.repository }}
+          MERGE_COMMIT: {{ '${{' }} github.sha }}
+        run: |
+          set -ex
+          VERSION="${RELEASE_BRANCH#release/}"
+          gh release create "v${VERSION}" --draft --generate-notes \
+            --repo "${REPOSITORY}" --target "${MERGE_COMMIT}"
+          gh release upload "v${VERSION}" dist/* \
+            --repo "${REPOSITORY}"
