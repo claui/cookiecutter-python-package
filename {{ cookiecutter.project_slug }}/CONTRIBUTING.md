@@ -157,14 +157,12 @@ poetry run poe typecheck
 
 ### Running the entire CI pipeline locally
 
-If you have [act](https://github.com/nektos/act) installed, run:
+If you have [act](https://github.com/nektos/act) installed and a
+Docker daemon active, run:
 
 ```sh
-act --container-options "-v act-toolcache:/opt/hostedtoolcache"
+act
 ```
-
-See also
-issue [nektos/act#1987](https://github.com/nektos/act/issues/1987).
 
 ### Generating project documentation
 
