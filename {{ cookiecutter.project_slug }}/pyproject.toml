@@ -1,5 +1,5 @@
 [build-system]
-requires = ["poetry-core>=1.1.0"]
+requires = ["poetry-core>=1.9.0"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poetry]
@@ -30,10 +30,10 @@ autopep8 = "*"
 {%- if cookiecutter.use_jupyter == "y" %}
 ipykernel = "*"
 {%- endif %}
-mypy = "~=0.991"
-pdoc = "~=12.3"
-poethepoet = "~=0.22"
-pylint = "~=2.17"
+mypy = "~=1.8"
+pdoc = "~=14.0"
+poethepoet = "~=0.24"
+pylint = "~=3.0"
 pytest = "*"
 {%- if cookiecutter.use_fire == "y" %}
 types-colorama = "*"
