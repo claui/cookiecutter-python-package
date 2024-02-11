@@ -8,18 +8,24 @@ this document.
 To allow automatic deployment to TestPyPI, go to the
 [Trusted Publisher Management](https://test.pypi.org/manage/account/publishing/)
 page and add a new pending publisher with the *Workflow* field set to
-`prepare-release.yml`.
+`prepare-release.yml` and the *Environment name* set to `testpypi`.
 
 To allow automatic deployment to PyPI, go to the
-[Trusted Publisher Management](https://test.pypi.org/manage/account/publishing/)
+[Trusted Publisher Management](https://pypi.org/manage/account/publishing/)
 page and add a new pending publisher with the *Workflow* field set to
-`pr-post-merge.yml`.
+`pr-post-merge.yml` and the *Environment name* set to `pypi`.
 
 To configure your GitHub repository for the included workflows, go to
-your project settings and choose Action » General.
+your project settings and choose Actions » General.
 
-Add the following actions to the *Allow specified actions and reusable
-workflows* field:
+Near the top of the page, choose the option *Allow (your username),
+and select non-(your username), actions and reusable workflows*.
+
+Check the two boxes *Allow actions created by GitHub* and *Allow
+actions by Marketplace verified creators*.
+
+Then add the following actions to the *Allow specified actions and
+reusable workflows* field:
 
 ```plain
 EndBug/add-and-commit@v9,
@@ -30,9 +36,17 @@ softprops/action-gh-release@v1,
 Also make sure that *Workflow permissions* is set to *Read and write
 permissions*.
 
-Finally, go to Repository details on the main page of your repository
-and enable Releases and Deployments in the *Include in the home page*
-section.
+Additionally, create an empty commit:
+
+```shell
+git commit --allow-empty -m 'Initial commit'
+```
+
+Push the commit to your GitHub repository, then refresh the main page
+of your repository. Click the small gear icon that appears in the
+upper right corner to bring up the Repository settings dialog.
+In the *Include in the home page* section, disable Packages but keep
+Releases and Deployments enabled.
 
 Now that you’ve done everything in this section, delete the section from
 this document.
