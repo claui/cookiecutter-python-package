@@ -16,10 +16,6 @@ indent_size = 16
 end_of_line = lf
 trim_trailing_whitespace = false
 
-[*.bat]
-charset = cp850
-end_of_line = crlf
-
 [*.json]
 indent_size = 2
 

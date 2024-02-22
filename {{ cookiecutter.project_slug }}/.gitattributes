@@ -17,12 +17,6 @@
 *.diff          text eol=lf
 *.patch         text eol=lf
 
-# LF required to allow shell scripts to run
-/.shims/*       text eol=lf
-
-*.bat           text eol=crlf
-/.shims/*.bat   text eol=crlf
-
 *.json          text eol=lf
 *.md            text eol=lf
 *.py            text eol=lf
