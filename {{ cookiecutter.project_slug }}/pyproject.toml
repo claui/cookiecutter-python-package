@@ -29,11 +29,11 @@ authors = [
 license = "{{ cookiecutter.project_license }}"
 
 [tool.poetry.dependencies]
-python = "~{{ cookiecutter.python_version }}"
+python = ">={{ cookiecutter.python_version }}"
 {%- if cookiecutter.use_fire == "y" %}
 colorama = "*"
 {%- endif %}
-dataclass-wizard = "~=0.22"
+dataclass-wizard = ">=0.22"
 {%- if cookiecutter.use_fire == "y" %}
 fire = "*"
 {%- endif %}
@@ -46,10 +46,10 @@ autopep8 = "*"
 {%- if cookiecutter.use_jupyter == "y" %}
 ipykernel = "*"
 {%- endif %}
-mypy = "~=1.8"
-pdoc = "~=14.0"
-poethepoet = "~=0.24"
-pylint = "~=3.0"
+mypy = ">=1.8"
+pdoc = ">=14.0"
+poethepoet = ">=0.24"
+pylint = ">=3.0"
 pytest = "*"
 {%- if cookiecutter.use_fire == "y" %}
 types-colorama = "*"
