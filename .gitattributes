@@ -17,12 +17,6 @@
 *.diff          text eol=lf
 *.patch         text eol=lf
 
-# LF required to allow shell scripts to run
-/{{[[:space:]]cookiecutter.project_slug[[:space:]]}}/.shims/*      text eol=lf
-
-*.bat           text eol=crlf
-/{{[[:space:]]cookiecutter.project_slug[[:space:]]}}/.shims/*.bat  text eol=crlf
-
 *.json          text eol=lf
 *.md            text eol=lf
 *.py            text eol=lf

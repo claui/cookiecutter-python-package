@@ -2,6 +2,22 @@
 requires = ["poetry-core>=1.9.0"]
 build-backend = "poetry.core.masonry.api"
 
+[tool.mypy]
+check_untyped_defs = true
+disallow_any_generics = true
+disallow_incomplete_defs = true
+disallow_subclassing_any = true
+disallow_untyped_calls = true
+disallow_untyped_decorators = true
+disallow_untyped_defs = true
+files = "{{ cookiecutter.project_slug }}/**/*.py,tests/**/*.py"
+implicit_reexport = false
+no_implicit_optional = true
+strict_equality = true
+warn_redundant_casts = true
+warn_return_any = true
+warn_unused_ignores = true
+
 [tool.poetry]
 name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.project_version }}"
@@ -13,11 +29,11 @@ authors = [
 license = "{{ cookiecutter.project_license }}"
 
 [tool.poetry.dependencies]
-python = "~{{ cookiecutter.python_version }}"
+python = ">={{ cookiecutter.python_version }}"
 {%- if cookiecutter.use_fire == "y" %}
 colorama = "*"
 {%- endif %}
-dataclass-wizard = "~=0.22"
+dataclass-wizard = ">=0.22"
 {%- if cookiecutter.use_fire == "y" %}
 fire = "*"
 {%- endif %}
@@ -30,10 +46,10 @@ autopep8 = "*"
 {%- if cookiecutter.use_jupyter == "y" %}
 ipykernel = "*"
 {%- endif %}
-mypy = "~=1.8"
-pdoc = "~=14.0"
-poethepoet = "~=0.24"
-pylint = "~=3.0"
+mypy = ">=1.8"
+pdoc = ">=14.0"
+poethepoet = ">=0.24"
+pylint = ">=3.0"
 pytest = "*"
 {%- if cookiecutter.use_fire == "y" %}
 types-colorama = "*"

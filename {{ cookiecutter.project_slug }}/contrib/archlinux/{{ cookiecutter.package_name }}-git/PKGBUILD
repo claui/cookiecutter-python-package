@@ -1,52 +1,55 @@
 # Maintainer: {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>
 
 pkgname={{ cookiecutter.package_name }}-git
+_gitpkgname={{ cookiecutter.package_name }}
 pkgver=VERSION
 pkgrel=1
 pkgdesc='{{ cookiecutter.project_description }}'
 arch=('any')
 url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}'
 license=('{{ cookiecutter.pkgbuild_license }}')
-depends=()
+depends=(
+  {%- if cookiecutter.use_fire == "y" %}
+  'python-colorama'
+  'python-fire'
+  {%- else %}
+  'python'
+  {%- endif %}
+)
 makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-poetry-core'
+  'python-poetry'
   'python-wheel'
 )
 checkdepends=('python-pytest')
 provides=('{{ cookiecutter.package_name }}')
 conflicts=('{{ cookiecutter.package_name }}')
 options=('!strip')
-
-source=(
-  "${pkgname}::git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}.git"
-)
-
-sha512sums=(
-  'SKIP'
-)
+source=("${_gitpkgname}::git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}.git")
+sha512sums=('SKIP')
 
 pkgver() {
+  cd "${srcdir}/${_gitpkgname}"
   printf "%s.r%s.%s" \
     "$(poetry version -s)" \
-    "$(git -C "${pkgname}" rev-list --count HEAD)" \
-    "$(git -C "${pkgname}" rev-parse --short HEAD)"
+    "$(git rev-list --count HEAD)" \
+    "$(git rev-parse --short HEAD)"
 }
 
 build() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_gitpkgname}"
   python -m build --wheel --no-isolation
 }
 
 check() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_gitpkgname}"
   python -m pytest
 }
 
 package() {
-  cd "${srcdir}/${pkgname}"
+  cd "${srcdir}/${_gitpkgname}"
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" dist/*.whl

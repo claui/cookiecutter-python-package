@@ -7,7 +7,14 @@ pkgdesc='{{ cookiecutter.project_description }}'
 arch=('any')
 url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}'
 license=('{{ cookiecutter.pkgbuild_license }}')
-depends=()
+depends=(
+  {%- if cookiecutter.use_fire == "y" %}
+  'python-colorama'
+  'python-fire'
+  {%- else %}
+  'python'
+  {%- endif %}
+)
 makedepends=(
   'python-build'
   'python-installer'
@@ -15,16 +22,9 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest')
-conflicts=('{{ cookiecutter.package_name }}-git')
 options=('!strip')
-
-source=(
-  "${pkgname}-${pkgver}.tar.gz::https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}/archive/v${pkgver}.tar.gz"
-)
-
-sha512sums=(
-  '00000000'
-)
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}/archive/v${pkgver}.tar.gz")
+sha512sums=('00000000')
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"

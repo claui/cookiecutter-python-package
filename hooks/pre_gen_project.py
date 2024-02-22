@@ -2,8 +2,8 @@
 {# See https://wiki.archlinux.org/title/PKGBUILD#license #}
 {%
     set pkgbuild_license_dict = {
-        "Apache-2.0": "Apache",
-        "Proprietary": "custom",
+        "Apache-2.0": "Apache-2.0",
+        "Proprietary": "LicenseRef-custom",
     }
 %}
 {{
