@@ -12,7 +12,7 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
-  'python-poetry-core'
+  'python-poetry'
   'python-wheel'
 )
 checkdepends=('python-pytest')
