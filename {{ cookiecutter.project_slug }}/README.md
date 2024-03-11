@@ -34,7 +34,8 @@ softprops/action-gh-release@v1,
 ```
 
 Also make sure that *Workflow permissions* is set to *Read and write
-permissions*.
+permissions* and that the checkbox *Allow GitHub Actions to create
+and approve pull requests* is enabled.
 
 Additionally, create an empty commit:
 
