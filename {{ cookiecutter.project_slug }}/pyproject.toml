@@ -40,15 +40,9 @@ dataclass-wizard = ">=0.22"
 {%- if cookiecutter.use_fire == "y" %}
 fire = "*"
 {%- endif %}
-{%- if cookiecutter.use_pandas == "y" %}
-pandas = "*"
-{%- endif %}
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "*"
-{%- if cookiecutter.use_jupyter == "y" %}
-ipykernel = "*"
-{%- endif %}
 mypy = ">=1.8"
 pdoc = ">=14.0"
 poethepoet = ">=0.24"

@@ -13,7 +13,5 @@
   "include_executable": "y",
   "executable_name": "{{ cookiecutter.project_slug.replace('_', '-') }}",
   "use_fire": "n",
-  "use_jupyter": "n",
-  "use_pandas": "n",
   "install_dependencies_now": "y"
 }
