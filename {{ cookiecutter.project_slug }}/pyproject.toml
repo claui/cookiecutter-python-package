@@ -22,7 +22,10 @@ warn_unused_ignores = true
 name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
-readme = "README.md"
+readme = [
+    "README.md",
+    "USAGE.md",
+]
 authors = [
     "{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>",
 ]
