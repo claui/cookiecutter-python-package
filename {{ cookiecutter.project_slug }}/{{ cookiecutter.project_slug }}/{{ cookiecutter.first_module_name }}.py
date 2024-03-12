@@ -4,7 +4,9 @@ import os
 from typing import Optional
 
 from .errors import CliError
+from .logging import get_logger
 
+logger = get_logger(__name__)
 
 
 class {{ cookiecutter.first_module_name.capitalize() }}:
@@ -51,7 +53,9 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
 
     def off(self) -> None:
         """Disables {{ cookiecutter.project_title }}."""
+        logger.info('Disabling {{ cookiecutter.project_title }}')
 
 
     def on(self) -> None:
         """Enables {{ cookiecutter.project_title }}."""
+        logger.info('Enabling {{ cookiecutter.project_title }}')
