@@ -2,4 +2,4 @@
 
   * Initial release
 
- -- {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>  {% now 'local', 'ddd, DD MMM YYYY HH:mm:ss Z' %}
+ -- {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>  {% now 'local', '%a, %d %b %Y %X %z' %}
