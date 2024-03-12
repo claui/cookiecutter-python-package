@@ -2,12 +2,17 @@
 
 from contextlib import suppress
 import importlib.metadata
-from typing import Union
-
+{% if cookiecutter.use_alternative_union_syntax != "y" -%}
+from typing import Optional
+{% endif %}
 from .settings import PYPROJECT_TOML
 
 
-def version() -> Union[str, None]:
+{% if cookiecutter.use_alternative_union_syntax == "y" -%}
+def version() -> str | None:
+{%- else -%}
+def version() -> Optional[str]:
+{%- endif %}
     """Attempts to return a version number for this project.
 
     Checks both `pyproject.toml` in the development tree and the

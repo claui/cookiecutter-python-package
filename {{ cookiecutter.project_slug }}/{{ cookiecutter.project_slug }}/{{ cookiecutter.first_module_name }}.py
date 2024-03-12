@@ -1,8 +1,9 @@
 """The primary module in {{ cookiecutter.project_slug }}."""
 
 import os
+{% if cookiecutter.use_alternative_union_syntax != "y" -%}
 from typing import Optional
-
+{% endif %}
 from .errors import CliError
 from .logging import get_logger
 
@@ -24,7 +25,11 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
     """
 
     def __init__(self,
+        {% if cookiecutter.use_alternative_union_syntax == "y" -%}
+        foobar: str | None=None,
+        {%- else -%}
         foobar: Optional[str]=None,
+        {%- endif %}
         qux: str='/path/to/qux',
     ) -> None:
         if (merged_foobar := foobar or os.environ.get('FOOBAR', None)) is None:

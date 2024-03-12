@@ -12,6 +12,10 @@
             cookiecutter.project_slug.replace('_', '-'),
         "spdx_license":
             spdx_license_dict[cookiecutter.project_license],
+        "use_alternative_union_syntax":
+            "y" if cookiecutter.python_version.split(".")
+                | map("int") | list >= (3, 10) | list
+            else "n",
     })
 }}
 """
