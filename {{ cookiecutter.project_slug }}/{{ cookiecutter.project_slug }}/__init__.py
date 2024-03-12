@@ -8,6 +8,8 @@
 # (This promotes them from {{ cookiecutter.project_slug }}.{{ cookiecutter.first_module_name }} to {{ cookiecutter.project_slug }})
 from {{ cookiecutter.project_slug }}.{{ cookiecutter.first_module_name }} import {{ cookiecutter.first_module_name.capitalize() }} as {{ cookiecutter.first_module_name.capitalize() }}
 
+from {{ cookiecutter.project_slug }}.version import version
+
 __all__ = [
     # Tell pdoc to pick up all re-exported symbols
     '{{ cookiecutter.first_module_name.capitalize() }}',
@@ -17,3 +19,5 @@ __all__ = [
     '{{ cookiecutter.first_module_name }}',
     'settings',
 ]
+
+__version__ = version()
