@@ -70,13 +70,13 @@
       }
     },
     {
-      "label": "{{ cookiecutter.project_title }}: Browse documentation",
+      "label": "{{ cookiecutter.project_title }}: Browse HTML documentation",
       "type": "process",
       "command": "poetry",
       "args": [
         "run",
         "poe",
-        "doc"
+        "html"
       ],
       "problemMatcher": [],
       "group": "build",
