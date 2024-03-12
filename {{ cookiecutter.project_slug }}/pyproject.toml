@@ -22,38 +22,38 @@ warn_unused_ignores = true
 name = "{{ cookiecutter.project_slug }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
-readme = "README.md"
+readme = [
+    "README.md",
+    "USAGE.md",
+]
 authors = [
     "{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>",
 ]
 license = "{{ cookiecutter.project_license }}"
+# See https://pypi.org/pypi?%3Aaction=list_classifiers
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Utilities",
+]
 
 [tool.poetry.dependencies]
 python = ">={{ cookiecutter.python_version }}"
-{%- if cookiecutter.use_fire == "y" %}
 colorama = "*"
-{%- endif %}
 dataclass-wizard = ">=0.22"
-{%- if cookiecutter.use_fire == "y" %}
 fire = "*"
-{%- endif %}
-{%- if cookiecutter.use_pandas == "y" %}
-pandas = "*"
-{%- endif %}
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "*"
-{%- if cookiecutter.use_jupyter == "y" %}
-ipykernel = "*"
-{%- endif %}
 mypy = ">=1.8"
+myst-parser = ">=2.0.0"
 pdoc = ">=14.0"
 poethepoet = ">=0.24"
 pylint = ">=3.0"
 pytest = "*"
-{%- if cookiecutter.use_fire == "y" %}
+sphinx = ">=7.1.2,<7.2.0"
 types-colorama = "*"
-{%- endif %}
 
 {% if cookiecutter.include_executable == "y" -%}
 [tool.poetry.scripts]
@@ -66,20 +66,18 @@ verbosity = -1
 [tool.poe.tasks]
 tasks.cmd = "poe -v"
 tasks.help = "List available tasks"
-{%- if cookiecutter.use_fire == "y" %}
 cli.script = "{{ cookiecutter.project_slug }}.cli:run"
 cli.help = "Run command line interface"
-{%- endif %}
-doc.cmd = "pdoc {{ cookiecutter.project_slug }} !{{ cookiecutter.project_slug }}.settings"
-doc.help = "Browse documentation"
-{%- if cookiecutter.use_fire == "y" %}
+doc.cmd = "sphinx-build -aqEW -b man doc/sphinx build/man"
+doc.help = "Generate documentation"
 hello.script = "{{ cookiecutter.project_slug }}.cli:run('hello')"
-{%- else %}
-hello.script = "{{ cookiecutter.project_slug }}.cli:run"
-{%- endif %}
 hello.help = "Run hello"
+html.cmd = "pdoc {{ cookiecutter.project_slug }} !{{ cookiecutter.project_slug }}.settings"
+html.help = "Browse HTML documentation"
 linter.cmd = "pylint --enable-all-extensions {{ cookiecutter.project_slug }}"
 linter.help = "Check for style violations"
+man.cmd = "man build/man/{{ cookiecutter.executable_name }}.1"
+man.help = "Open manual page"
 tests.cmd = "pytest"
 tests.help = "Run test suite"
 typecheck.cmd = "mypy"

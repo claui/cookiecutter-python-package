@@ -1,0 +1,1 @@
+build/man/{{ cookiecutter.executable_name }}.1

@@ -1,7 +1,7 @@
 """
 {# See https://wiki.archlinux.org/title/PKGBUILD#license #}
 {%
-    set pkgbuild_license_dict = {
+    set spdx_license_dict = {
         "Apache-2.0": "Apache-2.0",
         "Proprietary": "LicenseRef-custom",
     }
@@ -10,8 +10,12 @@
     cookiecutter.update({
         "package_name":
             cookiecutter.project_slug.replace('_', '-'),
-        "pkgbuild_license":
-            pkgbuild_license_dict[cookiecutter.project_license],
+        "spdx_license":
+            spdx_license_dict[cookiecutter.project_license],
+        "use_alternative_union_syntax":
+            "y" if cookiecutter.python_version.split(".")
+                | map("int") | list >= (3, 10) | list
+            else "n",
     })
 }}
 """

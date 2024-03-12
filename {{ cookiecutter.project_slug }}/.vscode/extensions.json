@@ -1,6 +1,7 @@
 {
   "recommendations": [
     "claui.packaging",
+    "dawidd6.debian-vscode",
     "editorconfig.editorconfig",
     "ms-python.black-formatter",
     "ms-python.mypy-type-checker",

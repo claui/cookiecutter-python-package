@@ -6,14 +6,10 @@ pkgrel=1
 pkgdesc='{{ cookiecutter.project_description }}'
 arch=('any')
 url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}'
-license=('{{ cookiecutter.pkgbuild_license }}')
+license=('{{ cookiecutter.spdx_license }}')
 depends=(
-  {%- if cookiecutter.use_fire == "y" %}
   'python-colorama'
   'python-fire'
-  {%- else %}
-  'python'
-  {%- endif %}
 )
 makedepends=(
   'python-build'

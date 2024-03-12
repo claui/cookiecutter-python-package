@@ -69,6 +69,9 @@ disable=raw-checker-failed,
         deprecated-pragma,
         use-symbolic-message-instead,
         docstring-first-line-empty,
+        {%- if cookiecutter.use_alternative_union_syntax != "y" %}
+        consider-alternative-union-syntax,
+        {%- endif %}
         useless-import-alias
 
 # Enable the message, report, category or checker with the given id(s). You can
