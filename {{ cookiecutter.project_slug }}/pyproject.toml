@@ -30,6 +30,12 @@ authors = [
     "{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>",
 ]
 license = "{{ cookiecutter.project_license }}"
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Utilities",
+]
 
 [tool.poetry.dependencies]
 python = ">={{ cookiecutter.python_version }}"
