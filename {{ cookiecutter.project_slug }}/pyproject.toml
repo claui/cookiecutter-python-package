@@ -30,6 +30,7 @@ authors = [
     "{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>",
 ]
 license = "{{ cookiecutter.project_license }}"
+# See https://pypi.org/pypi?%3Aaction=list_classifiers
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Operating System :: MacOS",
