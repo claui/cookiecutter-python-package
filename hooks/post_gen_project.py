@@ -5,10 +5,6 @@ import subprocess
 
 shutil.rmtree('licenses')
 
-{%- if cookiecutter.use_fire != "y" %}
-os.unlink('{{ cookiecutter.project_slug }}/fire_workarounds.py')
-{%- endif %}
-
 {%- if cookiecutter.install_dependencies_now == "y" %}
 poetry_environment = os.environ.copy()
 poetry_environment.update({

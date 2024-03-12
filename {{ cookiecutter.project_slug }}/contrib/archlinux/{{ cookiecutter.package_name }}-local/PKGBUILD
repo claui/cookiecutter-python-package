@@ -8,12 +8,8 @@ arch=('any')
 url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}'
 license=('{{ cookiecutter.pkgbuild_license }}')
 depends=(
-  {%- if cookiecutter.use_fire == "y" %}
   'python-colorama'
   'python-fire'
-  {%- else %}
-  'python'
-  {%- endif %}
 )
 makedepends=(
   'git'

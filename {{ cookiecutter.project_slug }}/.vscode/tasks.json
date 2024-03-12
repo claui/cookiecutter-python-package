@@ -3,7 +3,6 @@
   // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": [
-    {%- if cookiecutter.use_fire == "y" %}
     {
       "label": "{{ cookiecutter.project_title }}: Show usage help",
       "type": "shell",
@@ -20,7 +19,6 @@
         "showReuseMessage": false
       }
     },
-    {%- endif %}
     {
       "label": "{{ cookiecutter.project_title }}: Run hello",
       "type": "shell",

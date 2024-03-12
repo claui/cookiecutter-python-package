@@ -33,13 +33,9 @@ license = "{{ cookiecutter.project_license }}"
 
 [tool.poetry.dependencies]
 python = ">={{ cookiecutter.python_version }}"
-{%- if cookiecutter.use_fire == "y" %}
 colorama = "*"
-{%- endif %}
 dataclass-wizard = ">=0.22"
-{%- if cookiecutter.use_fire == "y" %}
 fire = "*"
-{%- endif %}
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "*"
@@ -48,9 +44,7 @@ pdoc = ">=14.0"
 poethepoet = ">=0.24"
 pylint = ">=3.0"
 pytest = "*"
-{%- if cookiecutter.use_fire == "y" %}
 types-colorama = "*"
-{%- endif %}
 
 {% if cookiecutter.include_executable == "y" -%}
 [tool.poetry.scripts]
@@ -63,17 +57,11 @@ verbosity = -1
 [tool.poe.tasks]
 tasks.cmd = "poe -v"
 tasks.help = "List available tasks"
-{%- if cookiecutter.use_fire == "y" %}
 cli.script = "{{ cookiecutter.project_slug }}.cli:run"
 cli.help = "Run command line interface"
-{%- endif %}
 doc.cmd = "pdoc {{ cookiecutter.project_slug }} !{{ cookiecutter.project_slug }}.settings"
 doc.help = "Browse documentation"
-{%- if cookiecutter.use_fire == "y" %}
 hello.script = "{{ cookiecutter.project_slug }}.cli:run('hello')"
-{%- else %}
-hello.script = "{{ cookiecutter.project_slug }}.cli:run"
-{%- endif %}
 hello.help = "Run hello"
 linter.cmd = "pylint --enable-all-extensions {{ cookiecutter.project_slug }}"
 linter.help = "Check for style violations"
