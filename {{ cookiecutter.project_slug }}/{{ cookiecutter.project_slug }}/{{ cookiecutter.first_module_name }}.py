@@ -34,7 +34,7 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
         self._qux = qux
 
 
-    def hello(self, name: str = 'world') -> str:
+    def hello(self, name: str = 'world') -> str:  # pylint: disable=no-self-use
         """Says hello to someone.
 
         :param `name`:
@@ -51,11 +51,11 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
         return f'Hello, {name}!'
 
 
-    def off(self) -> None:
+    def off(self) -> None:  # pylint: disable=no-self-use
         """Disables {{ cookiecutter.project_title }}."""
         logger.info('Disabling {{ cookiecutter.project_title }}')
 
 
-    def on(self) -> None:
+    def on(self) -> None:  # pylint: disable=no-self-use
         """Enables {{ cookiecutter.project_title }}."""
         logger.info('Enabling {{ cookiecutter.project_title }}')
