@@ -6,11 +6,11 @@
 
 # Re-export these symbols
 # (This promotes them from {{ cookiecutter.project_slug }}.{{ cookiecutter.first_module_name }} to {{ cookiecutter.project_slug }})
-from {{ cookiecutter.project_slug }}.{{ cookiecutter.first_module_name }} import hello as hello
+from {{ cookiecutter.project_slug }}.{{ cookiecutter.first_module_name }} import {{ cookiecutter.first_module_name.capitalize() }} as {{ cookiecutter.first_module_name.capitalize() }}
 
 __all__ = [
     # Tell pdoc to pick up all re-exported symbols
-    'hello',
+    '{{ cookiecutter.first_module_name.capitalize() }}',
 
     # Modules that every subpackage should see
     # (This also exposes them to pdoc)
