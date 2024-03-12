@@ -1,0 +1,15 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: {{ cookiecutter.package_name }}
+Upstream-Contact: {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>
+Source: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}
+
+Files: *
+Copyright: {% now 'local', '%Y' %} {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>
+License: {{ cookiecutter.spdx_license }}
+
+License: {{ cookiecutter.spdx_license }}
+{% if cookiecutter.project_license == "Apache-2.0" -%}
+{% include 'licenses/Apache-2.0-reference-debian.txt' %}
+{%- elif cookiecutter.project_license == "Proprietary" -%}
+{% include 'licenses/Proprietary-reference-debian.txt' %}
+{%- endif -%}
