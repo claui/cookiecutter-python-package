@@ -15,7 +15,9 @@ makedepends=(
   'git'
   'python-build'
   'python-installer'
+  'python-myst-parser'
   'python-poetry'
+  'python-sphinx'
   'python-wheel'
 )
 checkdepends=('python-pytest')
@@ -35,7 +37,11 @@ pkgver() {
 
 build() {
   cd "${srcdir}/{{ cookiecutter.project_slug }}"
+  echo >&2 'Building wheel'
   python -m build --wheel --no-isolation
+
+  echo >&2 'Generating man page'
+  sphinx-build -aqEW -b man doc/sphinx build/man
 }
 
 check() {
@@ -56,4 +62,8 @@ package() {
   echo >&2 'Packaging the license'
   install -D -m 644 -t "${pkgdir}/usr/share/licenses/${pkgname}" \
     'LICENSE'
+
+  echo >&2 'Packaging the man page'
+  install -D -m 644 -t "${pkgdir}/usr/share/man/man1" \
+    build/man/*.1
 }
