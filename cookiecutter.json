@@ -12,5 +12,11 @@
   "github_username": "",
   "include_executable": "y",
   "executable_name": "{{ cookiecutter.project_slug.replace('_', '-') }}",
-  "install_dependencies_now": "y"
+  "install_dependencies_now": "y",
+  "_copy_without_render": [
+    ".redport/patches/*.patch"
+  ],
+  "_extensions": [
+    "local_extensions.CustomGlobalsExtension"
+  ]
 }
