@@ -35,6 +35,9 @@
   "pylint.severity": {
     "refactor": "Warning"
   },
+  "markdownlint.config": {
+    "MD033": false
+  },
   "python.analysis.autoImportCompletions": true,
   "python.analysis.typeCheckingMode": "basic",
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"

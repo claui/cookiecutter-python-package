@@ -126,7 +126,7 @@ at [github.com/pyenv/pyenv](https://github.com/pyenv/pyenv#basic-github-checkout
 
 To install `pyenv` on macOS, run:
 
-```
+```shell
 brew install pyenv
 ```
 
@@ -134,7 +134,7 @@ brew install pyenv
 
 To verify your `pyenv` is working, run:
 
-```
+```shell
 pyenv --version
 ```
 
@@ -145,13 +145,13 @@ and available in your PATH.
 
 To check, run:
 
-```
+```shell
 python --version
 ```
 
 If that fails, try:
 
-```
+```shell
 python3 --version
 ```
 
@@ -172,11 +172,7 @@ To install Poetry on Windows, use one of the
 [installation methods](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
 described in Poetry’s documentation.
 
-To install Poetry on macOS, run:
-
-```
-brew install poetry
-```
+#### Installing Poetry on Linux
 
 If you’re on Linux or WSL2, use your system package manager to
 install Poetry.
@@ -185,11 +181,19 @@ Alternatively, use one of the
 [installation methods](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
 described in Poetry’s documentation.
 
+#### Installing Poetry on macOS
+
+To install Poetry on macOS, run:
+
+```shell
+brew install poetry
+```
+
 #### Checking your Poetry installation
 
 To verify Poetry is working, run:
 
-```
+```shell
 poetry --version
 ```
 
@@ -198,7 +202,7 @@ poetry --version
 To run the template generator, make sure you have a working
 Cookiecutter installation. Then run:
 
-```
+```shell
 cookiecutter gh:claui/cookiecutter-python-package
 ```
 
