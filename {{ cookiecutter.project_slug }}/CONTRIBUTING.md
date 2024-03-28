@@ -191,14 +191,6 @@ the virtual environment:
 poetry install
 ```
 
-### Checking {{ cookiecutter.project_title }}’s dependencies for vulnerabilities
-
-To check {{ cookiecutter.project_title }}’s dependencies for known vulnerabilities, run:
-
-```
-poetry run poe check
-```
-
 ### Checking {{ cookiecutter.project_title }}’s dependencies for compatible updates
 
 To check {{ cookiecutter.project_title }}’s dependencies for compatible updates, run:
