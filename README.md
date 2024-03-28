@@ -4,6 +4,12 @@
 template for Python projects with a focus on long-term
 maintainability and a reliable setup.
 
+## About this document
+
+This is the **user documentation** for the Cookiecutter template.  
+If you’re a **contributor**, see: [CONTRIBUTING.md](./CONTRIBUTING.md)  
+For **license information,** see the bottom of this document.
+
 ## About this template
 
 ### Goals
@@ -91,7 +97,7 @@ To use this Cookiecutter template, you need:
 
 2. A system-wide Python installation.
 
-3. The `cookiecutter` package.
+3. Cookiecutter version 2.6.0 or newer.
 
 4. The Python dependency manager `poetry`.
 
@@ -158,7 +164,9 @@ instructions](https://cookiecutter.readthedocs.io/en/stable/installation.html).
 
 ### Installing Poetry
 
-You’ll need `poetry` to manage development dependencies and the venv.
+You’ll need `poetry` to manage the generated Python package.
+
+#### Installing Poetry on Windows
 
 To install Poetry on Windows, use one of the
 [installation methods](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
@@ -199,20 +207,20 @@ cookiecutter gh:claui/cookiecutter-python-package
 If you use `cookiecutter-python-package` often, you can add to your
 `.cookiecutterrc` an `abbreviations` section like so:
 
-```
+```yaml
 abbreviations:
     python: https://github.com/claui/cookiecutter-python-package.git
 ```
 
 Then, to generate a project, run:
 
-```
+```shell
 cookiecutter python
 ```
 
 ## License
 
-Copyright (c) 2021 – 2022 Claudia Pellegrino <clau@tiqua.de>
+Copyright (c) 2021 – 2024 Claudia Pellegrino <clau@tiqua.de>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
