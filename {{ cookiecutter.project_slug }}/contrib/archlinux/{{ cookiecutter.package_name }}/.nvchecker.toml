@@ -1,0 +1,5 @@
+[{{ cookiecutter.package_name }}]
+source = "github"
+github = "{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}"
+prefix = "v"
+use_latest_release = true
