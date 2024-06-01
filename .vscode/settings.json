@@ -17,6 +17,7 @@
   "files.associations": {
     "**/?? cookiecutter.project_slug ??/**/*.json": "jinja-json",
     "**/?? cookiecutter.project_slug ??/.vscode/*.json": "jsonc",
+    "**/?? cookiecutter.project_slug ??/.python-version": "jinja",
     "**/?? cookiecutter.project_slug ??/**/*.md": "jinja-md",
     "**/?? cookiecutter.project_slug ??/**/*.py": "jinja-py",
     "**/?? cookiecutter.project_slug ??/**/*.toml": "jinja-toml",
