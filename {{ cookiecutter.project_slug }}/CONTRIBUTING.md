@@ -103,9 +103,9 @@ To set up your virtual environment, follow these steps:
 
 2. Run `pyenv install -s`.
 
-3. Run `pyenv exec pip install poetry`.
+3. Run `pyenv exec python -m venv .venv`.
 
-4. Run `pyenv exec poetry install`.
+4. Run `poetry install`.
 
 You need to do the above steps only once.
 
@@ -189,14 +189,6 @@ the virtual environment:
 
 ```
 poetry install
-```
-
-### Checking {{ cookiecutter.project_title }}’s dependencies for vulnerabilities
-
-To check {{ cookiecutter.project_title }}’s dependencies for known vulnerabilities, run:
-
-```
-poetry run poe check
 ```
 
 ### Checking {{ cookiecutter.project_title }}’s dependencies for compatible updates
