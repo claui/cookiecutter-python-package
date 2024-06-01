@@ -1,11 +1,36 @@
 import os
-import platform
 import shutil
 import subprocess
+import sys
 
 shutil.rmtree('licenses')
 
 {%- if cookiecutter.install_dependencies_now == "y" %}
+def sysexit_formatted(message: str) -> None:
+    width = max((len(line) for line in message))
+    print('', width * '-', *message, width * '-',
+        file=sys.stderr, sep='\n')
+    sys.exit()
+
+pyenv_commands = [
+    'pyenv install -s',
+    'pyenv exec python -m venv .venv',
+]
+
+try:
+    for pyenv_command in pyenv_commands:
+        subprocess.run(pyenv_command, check=True, shell=True)
+except subprocess.CalledProcessError as e:
+    sysexit_formatted([
+        f'Pyenv failed with exit code {e.returncode}.',
+        'Go to the {{ cookiecutter.project_slug }}'
+            ' directory and re-run:',
+        *[
+            f'    {command}'
+            for command in pyenv_commands + ['poetry install']
+        ],
+    ])
+
 poetry_environment = os.environ.copy()
 poetry_environment.update({
     'LANG': poetry_environment.get('LANG', 'en_US.UTF-8'),
