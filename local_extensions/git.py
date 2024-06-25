@@ -51,7 +51,11 @@ def _git_current_remote() -> str:
 
 
 def _git_current_remote_url() -> str:
-    remote = _git_current_remote()
+    try:
+        remote = _git_current_remote()
+    except UnexpectedGitState as err:
+        logger.warning(err)
+        remote = 'origin'
     try:
         return _git_query("config", f"remote.{remote}.url")
     except subprocess.SubprocessError as err:
