@@ -25,7 +25,6 @@
     "**/.git": true,
     "**/.mypy_cache": true,
     "**/.pytest_cache": true,
-    "**/.shims": true,
     "**/.venv": true,
     "**/*.egg-info": true,
     "**/__pycache__": true
