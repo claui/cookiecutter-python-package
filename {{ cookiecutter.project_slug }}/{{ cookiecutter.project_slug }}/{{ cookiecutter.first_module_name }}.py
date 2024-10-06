@@ -42,8 +42,8 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
     def hello(self, name: str = 'world') -> str:  # pylint: disable=no-self-use
         """Says hello to someone.
 
-        :param `name`:
-            whom to greet.
+        :param name:
+            Whom to greet.
             If left empty, we greet the `world`.
 
         :raises ValueError:
@@ -64,3 +64,37 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
     def on(self) -> None:  # pylint: disable=no-self-use
         """Enables {{ cookiecutter.project_title }}."""
         logger.info('Enabling {{ cookiecutter.project_title }}')
+
+
+def hello(
+    name: str = "world",
+    {% if cookiecutter.use_alternative_union_syntax == "y" -%}
+    foobar: str | None=None,
+    {%- else -%}
+    foobar: Optional[str]=None,
+    {%- endif %}
+    qux: str = "/path/to/qux",
+) -> str:
+    """Says hello to someone.
+
+    :param name:
+        Whom to greet.
+        If left empty, we greet the `world`.
+
+    :param foobar:
+        The Foobar to connect to.
+
+        Mandatory if no `FOOBAR` environment variable is defined.
+        This parameter takes precedence over the environment variable.
+
+    :param qux:
+        The path to Qux.
+
+        The default value is: `/path/to/qux`
+
+    :raises ValueError:
+        if `name` is empty.
+
+    :return: a friendly Hello, addressed to `name`.
+    """
+    return {{ cookiecutter.first_module_name.capitalize() }}(foobar, qux).hello(name)

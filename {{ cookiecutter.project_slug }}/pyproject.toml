@@ -58,6 +58,7 @@ types-colorama = "*"
 {% if cookiecutter.include_executable == "y" -%}
 [tool.poetry.scripts]
 {{ cookiecutter.executable_name }} = "{{ cookiecutter.project_slug }}.cli:run"
+hello = "{{ cookiecutter.project_slug }}.cli:hello"
 
 {% endif -%}
 [tool.poe]
@@ -70,7 +71,7 @@ cli.script = "{{ cookiecutter.project_slug }}.cli:run"
 cli.help = "Run command line interface"
 doc.cmd = "sphinx-build -aqEW -b man doc/sphinx build/man"
 doc.help = "Generate documentation"
-hello.script = "{{ cookiecutter.project_slug }}.cli:run('hello')"
+hello.script = "{{ cookiecutter.project_slug }}.cli:hello"
 hello.help = "Run hello"
 html.cmd = "pdoc {{ cookiecutter.project_slug }} !{{ cookiecutter.project_slug }}.settings"
 html.help = "Browse HTML documentation"
