@@ -4,7 +4,9 @@ import os
 {% if cookiecutter.use_alternative_union_syntax != "y" -%}
 from typing import Optional
 {% endif %}
+{% if cookiecutter.include_executable == "y" -%}
 from .errors import CliError
+{% endif -%}
 from .logging import get_logger
 
 logger = get_logger(__name__)
@@ -33,8 +35,13 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
         qux: str='/path/to/qux',
     ) -> None:
         if (merged_foobar := foobar or os.environ.get('FOOBAR', None)) is None:
+            {% if cookiecutter.include_executable == "y" -%}
             raise CliError('The `--foobar` switch must be given if ' +
                 'no `FOOBAR` environment variable is defined.')
+            {%- else -%}
+            raise ValueError('The `foobar` argument must be given if ' +
+                'no `FOOBAR` environment variable is defined.')
+            {%- endif %}
         self._foobar = merged_foobar
         self._qux = qux
 

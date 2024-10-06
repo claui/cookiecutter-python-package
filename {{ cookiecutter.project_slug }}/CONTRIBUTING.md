@@ -28,7 +28,7 @@ and follow one of the installation methods.
 #### Installing pyenv on Linux
 
 To install `pyenv` on Linux or WSL2, first make sure Python 3 is
-installed. Then follow the *Basic GitHub Checkout* method described
+installed. Then follow the _Basic GitHub Checkout_ method described
 at [github.com/pyenv/pyenv](https://github.com/pyenv/pyenv#basic-github-checkout).
 
 #### Installing pyenv on macOS
@@ -115,6 +115,7 @@ To update your dependencies after a `git pull`, run `poetry update`.
 
 To see a list of available tasks, run: `poetry run poe tasks`
 
+{% if cookiecutter.include_executable == "y" -%}
 ### Running {{ cookiecutter.project_title }}
 
 To execute {{ cookiecutter.project_title }}, run:
@@ -123,6 +124,7 @@ To execute {{ cookiecutter.project_title }}, run:
 poetry run poe cli
 ```
 
+{% endif -%}
 ### Running the tests
 
 To execute the tests, run:

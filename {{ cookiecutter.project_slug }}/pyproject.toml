@@ -67,12 +67,16 @@ verbosity = -1
 [tool.poe.tasks]
 tasks.cmd = "poe -v"
 tasks.help = "List available tasks"
+{% if cookiecutter.include_executable == "y" -%}
 cli.script = "{{ cookiecutter.project_slug }}.cli:run"
 cli.help = "Run command line interface"
+{% endif -%}
 doc.cmd = "sphinx-build -aqEW -b man doc/sphinx build/man"
 doc.help = "Generate documentation"
+{% if cookiecutter.include_executable == "y" -%}
 hello.script = "{{ cookiecutter.project_slug }}.cli:hello"
 hello.help = "Run hello"
+{% endif -%}
 html.cmd = "pdoc {{ cookiecutter.project_slug }} !{{ cookiecutter.project_slug }}.settings"
 html.help = "Browse HTML documentation"
 linter.cmd = "pylint --enable-all-extensions {{ cookiecutter.project_slug }}"

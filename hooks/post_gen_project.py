@@ -22,6 +22,12 @@ shutil.copy(
 
 shutil.rmtree('licenses')
 
+{% if cookiecutter.include_executable != "y" -%}
+os.remove('.vscode/launch.json')
+os.remove('{{ cookiecutter.project_slug }}/__main__.py')
+os.remove('{{ cookiecutter.project_slug }}/cli.py')
+{% endif -%}
+
 {%- if cookiecutter.install_dependencies_now == "y" %}
 def sysexit_formatted(message: str) -> None:
     width = max((len(line) for line in message))

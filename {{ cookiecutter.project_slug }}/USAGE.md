@@ -40,5 +40,7 @@ The default value is: `/path/to/qux`
 
 `{{ cookiecutter.project_slug | upper }}_DEBUG`
 : If set to a non-zero value, causes {{ cookiecutter.project_title }} to enable debug-level
-: logging. Also prints stack traces for errors where it normally
-: would not.
+: logging.
+{% if cookiecutter.include_executable == "y" -%}
+: Also prints stack traces for errors where it normally would not.
+{% endif -%}
