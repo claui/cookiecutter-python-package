@@ -11,6 +11,7 @@
   "[yaml]": {
     "editor.defaultFormatter": "redhat.vscode-yaml"
   },
+  "editor.formatOnSave": true,
   "files.associations": {
     "**/?? cookiecutter.project_slug ??/**/*.json": "jinja-json",
     "**/?? cookiecutter.project_slug ??/.vscode/*.json": "jsonc",
