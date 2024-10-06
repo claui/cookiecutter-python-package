@@ -16,14 +16,17 @@ def get_logger(name: str) -> python_logging.Logger:
 
 
 class _CustomFormatter(python_logging.Formatter):
-    _format = "[%(levelname)s] %(message)s"
+    _format = '[%(levelname)s] %(message)s'
 
     FORMATS = {
         python_logging.DEBUG: Style.DIM + _format + Style.RESET_ALL,
         python_logging.INFO: Style.DIM + _format + Style.RESET_ALL,
         python_logging.WARNING: Fore.YELLOW + _format + Style.RESET_ALL,
         python_logging.ERROR: Fore.RED + _format + Style.RESET_ALL,
-        python_logging.CRITICAL: Style.BRIGHT + Fore.RED + _format + Style.RESET_ALL
+        python_logging.CRITICAL: Style.BRIGHT
+        + Fore.RED
+        + _format
+        + Style.RESET_ALL,
     }
 
     def format(self, record: python_logging.LogRecord) -> str:

@@ -32,7 +32,7 @@ def hello(*args: str) -> None:
 @contextmanager
 def _cli_context(*args: str) -> Generator[list[str], None, NoReturn]:
     combined_args = list(args) + sys.argv[1:]
-    if combined_args and combined_args[0] in {"-V", "--version"}:
+    if combined_args and combined_args[0] in {'-V', '--version'}:
         print(_version_text())
         sys.exit(0)
 
@@ -49,6 +49,8 @@ def _version_text() -> str:
     if __version__ is None:
         return '{{ cookiecutter.project_title }} (unknown version)'
     if os.path.exists(PYPROJECT_TOML):
-        return f'{{ cookiecutter.project_title }} v{__version__}' \
+        return (
+            f'{{ cookiecutter.project_title }} v{__version__}'
             + f' (in development at {PROJECT_ROOT})'
+        )
     return f'{{ cookiecutter.project_title }} v{__version__}'

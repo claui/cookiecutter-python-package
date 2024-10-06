@@ -90,3 +90,9 @@ reportUnsupportedDunderAll = "none"
 [tool.pytest.ini_options]
 testpaths = "tests"
 xfail_strict = true
+
+[tool.ruff]
+line-length = 72
+
+[tool.ruff.format]
+quote-style = "single"

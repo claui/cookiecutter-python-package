@@ -67,13 +67,13 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
 
 
 def hello(
-    name: str = "world",
+    name: str = 'world',
     {% if cookiecutter.use_alternative_union_syntax == "y" -%}
     foobar: str | None=None,
     {%- else -%}
     foobar: Optional[str]=None,
     {%- endif %}
-    qux: str = "/path/to/qux",
+    qux: str = '/path/to/qux',
 ) -> str:
     """Says hello to someone.
 

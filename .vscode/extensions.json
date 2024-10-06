@@ -1,9 +1,9 @@
 {
   "recommendations": [
+    "charliermarsh.ruff",
     "claui.packaging",
     "davidanson.vscode-markdownlint",
     "editorconfig.editorconfig",
-    "ms-python.black-formatter",
     "ms-python.mypy-type-checker",
     "ms-python.pylint",
     "ms-python.python",
