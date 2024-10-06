@@ -23,7 +23,7 @@
 import shutil
 import sys
 
-MIN_SUPPORTED_PYTHON_VERSION = (3, 7)
+MIN_SUPPORTED_PYTHON_VERSION = (3, 8)
 if sys.version_info < MIN_SUPPORTED_PYTHON_VERSION:
 
     _version = ".".join(map(str, MIN_SUPPORTED_PYTHON_VERSION))
