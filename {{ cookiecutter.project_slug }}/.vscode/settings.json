@@ -17,6 +17,7 @@
   },
   "code-runner.ignoreSelection": true,
   "code-runner.saveFileBeforeRun": true,
+  "editor.formatOnSave": true,
   "editor.rulers": [
     68,
     72
