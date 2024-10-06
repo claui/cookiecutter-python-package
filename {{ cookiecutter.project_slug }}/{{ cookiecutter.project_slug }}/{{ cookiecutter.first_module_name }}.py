@@ -53,6 +53,7 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
         """
         if not name:
             raise ValueError('Name cannot be empty.')
+        logger.debug('Printing name: %s', name)
         return f'Hello, {name}!'
 
 

@@ -33,3 +33,12 @@ The parameter takes precedence over the environment variable.
 The path to Qux.
 
 The default value is: `/path/to/qux`
+
+# Environment
+
+{{ cookiecutter.project_title }} supports the following environment variable:
+
+`{{ cookiecutter.project_slug | upper }}_DEBUG`
+: If set to a non-zero value, causes {{ cookiecutter.project_title }} to enable debug-level
+: logging. Also prints stack traces for errors where it normally
+: would not.

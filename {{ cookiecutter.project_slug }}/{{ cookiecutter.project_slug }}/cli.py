@@ -11,7 +11,7 @@ import fire  # type: ignore
 from . import __version__, {{ cookiecutter.first_module_name }}, fire_workarounds
 from .errors import CliError
 from .logging import get_logger
-from .settings import PROJECT_ROOT, PYPROJECT_TOML
+from .settings import debugMode, PROJECT_ROOT, PYPROJECT_TOML
 
 
 logger = get_logger(__name__)
@@ -40,6 +40,8 @@ def _cli_context(*args: str) -> Generator[list[str], None, NoReturn]:
     try:
         yield combined_args
     except CliError as e:
+        if debugMode:
+            raise e
         logger.error(e)
         sys.exit(1)
     sys.exit(0)
