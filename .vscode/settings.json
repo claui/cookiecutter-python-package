@@ -1,6 +1,8 @@
 {
   "[json][jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "vscode.json-language-features",
+    // Built-in formatter disrespects insert_final_newline in .editorconfig
+    "editor.formatOnSave": false
   },
   "[python]": {
     "editor.defaultFormatter": "ms-python.black-formatter"
