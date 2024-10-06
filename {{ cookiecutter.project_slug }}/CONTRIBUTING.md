@@ -115,15 +115,13 @@ To update your dependencies after a `git pull`, run `poetry update`.
 
 To see a list of available tasks, run: `poetry run poe tasks`
 
-## Running {{ cookiecutter.project_title }}
+### Running {{ cookiecutter.project_title }}
 
 To execute {{ cookiecutter.project_title }}, run:
 
 ```
 poetry run poe cli
 ```
-
-## Contributing to {{ cookiecutter.project_title }}
 
 ### Running the tests
 
