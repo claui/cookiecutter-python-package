@@ -74,9 +74,9 @@ Direct your favorite
 [AUR helper](https://wiki.archlinux.org/title/AUR_helpers) to the
 `
 {%- if cookiecutter.include_executable == "y" -%}
-    python-{{ cookiecutter.package_name }}
-{%- else -%}
     {{ cookiecutter.package_name }}
+{%- else -%}
+    python-{{ cookiecutter.package_name }}
 {%- endif -%}
 ` package.
 
