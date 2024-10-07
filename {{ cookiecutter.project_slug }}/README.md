@@ -59,27 +59,35 @@ this document.
 To install {{ cookiecutter.project_title }} from PyPI, open a shell and run:
 
 ```shell
-pip install {{ cookiecutter.project_slug }}
+pip install {{ cookiecutter.package_name }}
 ```
 
 If that doesn’t work, try:
 
 ```shell
-python3 -m pip install {{ cookiecutter.project_slug }}
+python3 -m pip install {{ cookiecutter.package_name }}
 ```
 
 ### Installing from the AUR
 
 Direct your favorite
 [AUR helper](https://wiki.archlinux.org/title/AUR_helpers) to the
-`{{ cookiecutter.package_name }}` package.
+`
+{%- if cookiecutter.include_executable == "y" -%}
+    python-{{ cookiecutter.package_name }}
+{%- else -%}
+    {{ cookiecutter.package_name }}
+{%- endif -%}
+` package.
 
 ## Usage
 
+{% if cookiecutter.include_executable == "y" -%}
 ```shell
 {{ cookiecutter.executable_name }} [FLAGS] COMMAND
 ```
 
+{% endif -%}
 See [`USAGE.md`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}/blob/main/USAGE.md) or `man {{ cookiecutter.executable_name }}` for details.
 
 ## Contributing to {{ cookiecutter.project_title }}
