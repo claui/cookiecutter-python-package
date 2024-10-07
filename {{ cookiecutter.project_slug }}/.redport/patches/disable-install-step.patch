@@ -1,5 +1,5 @@
 diff --git a/hooks/post_gen_project.py b/hooks/post_gen_project.py
-index f7e520b..6d03107 100644
+index d40d99c..d1241e2 100644
 --- a/hooks/post_gen_project.py
 +++ b/hooks/post_gen_project.py
 @@ -1,24 +1,5 @@
@@ -27,9 +27,9 @@ index f7e520b..6d03107 100644
  
  shutil.rmtree('licenses')
  
-@@ -27,56 +8,3 @@ os.remove('.vscode/launch.json')
- os.remove('{{ cookiecutter.project_slug }}/__main__.py')
+@@ -28,56 +9,3 @@ os.remove('{{ cookiecutter.project_slug }}/__main__.py')
  os.remove('{{ cookiecutter.project_slug }}/cli.py')
+ os.remove('{{ cookiecutter.project_slug }}/fire_workarounds.py')
  {% endif -%}
 -
 -{%- if cookiecutter.install_dependencies_now == "y" %}
