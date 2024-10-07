@@ -40,9 +40,10 @@ classifiers = [
 
 [tool.poetry.dependencies]
 python = ">={{ cookiecutter.python_version }}"
+{%- if cookiecutter.include_executable == "y" %}
 colorama = "*"
-dataclass-wizard = ">=0.22"
 fire = "*"
+{%- endif %}
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "*"
@@ -53,7 +54,9 @@ poethepoet = ">=0.24"
 pylint = ">=3.0"
 pytest = "*"
 sphinx = ">=7.1.2,<7.2.0"
+{%- if cookiecutter.include_executable == "y" %}
 types-colorama = "*"
+{%- endif %}
 
 {% if cookiecutter.include_executable == "y" -%}
 [tool.poetry.scripts]
