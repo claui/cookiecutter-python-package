@@ -26,6 +26,7 @@ shutil.rmtree('licenses')
 os.remove('.vscode/launch.json')
 os.remove('{{ cookiecutter.project_slug }}/__main__.py')
 os.remove('{{ cookiecutter.project_slug }}/cli.py')
+os.remove('{{ cookiecutter.project_slug }}/fire_workarounds.py')
 {% endif -%}
 
 {%- if cookiecutter.install_dependencies_now == "y" %}

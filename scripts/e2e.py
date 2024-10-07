@@ -11,12 +11,13 @@ def run() -> None:
     target_path_name = cookiecutter(
         str(PROJECT_ROOT),
         no_input=True,
-        output_dir=mkdtemp(suffix=".e2e", prefix="cookiecutter."),
+        output_dir=mkdtemp(suffix='.e2e', prefix='cookiecutter.'),
         extra_context={
-            "project_title": "Flubber",
-            "github_username": "end_to_end_test",
-            "executable_name": "flub",
-            "install_dependencies_now": "n",
+            'project_title': 'Flubber',
+            'github_username': 'end_to_end_test',
+            'executable_name': 'flub',
+            'include_executable': 'y',
+            'install_dependencies_now': 'n',
         },
     )
     print(target_path_name)

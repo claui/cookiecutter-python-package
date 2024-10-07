@@ -54,5 +54,5 @@ package() {
 
   echo >&2 'Packaging the man page'
   install -D -m 644 -t "${pkgdir}/usr/share/man/man1" \
-    build/man/*.1
+    build/man/*.{% if cookiecutter.include_executable == "y" %}1{% else %}3{% endif %}
 }

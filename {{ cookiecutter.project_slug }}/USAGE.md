@@ -2,10 +2,15 @@
 
 # Synopsis
 
+{% if cookiecutter.include_executable == "y" -%}
 ```shell
 {{ cookiecutter.executable_name }} [FLAGS] COMMAND
 ```
+{%- else -%}
+*tbd*
+{%- endif %}
 
+{% if cookiecutter.include_executable == "y" -%}
 # Commands
 
 `COMMAND` is one of the following:
@@ -34,6 +39,7 @@ The path to Qux.
 
 The default value is: `/path/to/qux`
 
+{% endif -%}
 # Environment
 
 {{ cookiecutter.project_title }} supports the following environment variable:

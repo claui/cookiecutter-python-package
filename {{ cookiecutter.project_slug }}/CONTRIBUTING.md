@@ -166,10 +166,16 @@ act
 
 ### Generating project documentation
 
-To generate project documentation and open it in your browser, run:
+To generate project documentation, run:
 
 ```shell
 poetry run poe doc
+```
+
+To open the generated documentation with `man`, run:
+
+```shell
+poetry run poe man
 ```
 
 ## Maintenance

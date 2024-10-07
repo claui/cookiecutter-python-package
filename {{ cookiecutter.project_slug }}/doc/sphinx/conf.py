@@ -31,8 +31,16 @@ exclude_patterns = []
 
 man_pages = [(
     'index',
+    {% if cookiecutter.include_executable == "y" -%}
     executable_name,
+    {%- else -%}
+    '{{ cookiecutter.project_title | lower }}',
+    {%- endif %}
     description,
     [author],
+    {% if cookiecutter.include_executable == "y" -%}
     1,
+    {%- else -%}
+    3,
+    {%- endif %}
 )]
