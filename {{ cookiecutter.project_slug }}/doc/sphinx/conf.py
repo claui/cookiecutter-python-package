@@ -7,6 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = '{{ cookiecutter.project_title }}'
+executable_name = '{{ cookiecutter.executable_name }}'
 author = '{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>'
 description = '{{ cookiecutter.project_description }}'
 
@@ -30,7 +31,7 @@ exclude_patterns = []
 
 man_pages = [(
     'index',
-    project.lower(),
+    executable_name,
     description,
     [author],
     1,
