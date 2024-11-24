@@ -1,6 +1,8 @@
 {
   "project_title": "",
-  "python_package_name": "{{ cookiecutter.project_title.lower().replace(' ', '_').replace('-', '_') }}",
+  "pypi_package_name": "{{ cookiecutter.project_title.lower().replace(' ', '-').replace('_', '-') }}",
+  "python_package_name":
+  "{{ cookiecutter.pypi_package_name.replace('-', '_') }}",
   "project_description": "",
   "first_module_name": "api",
   "project_version": "0.1.0",
@@ -11,7 +13,7 @@
   "copyright_holder_full_name": "{{ cookiecutter.author_full_name }}",
   "github_username": "",
   "include_executable": "y",
-  "executable_name": "{{ cookiecutter.python_package_name.replace('_', '-') }}",
+  "executable_name": "{{ cookiecutter.pypi_package_name }}",
   "install_dependencies_now": "y",
   "_copy_without_render": [
     ".redport/patches/*.patch"
