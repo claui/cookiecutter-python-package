@@ -9,7 +9,7 @@
 {{
     cookiecutter.update({
         "pypi_package_name":
-            cookiecutter.project_slug.replace('_', '-'),
+            cookiecutter.python_package_name.replace('_', '-'),
         "spdx_license":
             spdx_license_dict[cookiecutter.project_license],
         "use_alternative_union_syntax":
@@ -33,9 +33,9 @@ This Cookiecutter template requires Python {_version} or higher.
 """
     )
 
-if '{{ cookiecutter.project_slug }}' \
+if '{{ cookiecutter.python_package_name }}' \
         == '{{ cookiecutter.first_module_name }}':
-    sys.exit('Project slug and first module name cannot be the same')
+    sys.exit('Package name and first module name cannot be the same')
 
 if not shutil.which('poetry'):
     sys.exit(

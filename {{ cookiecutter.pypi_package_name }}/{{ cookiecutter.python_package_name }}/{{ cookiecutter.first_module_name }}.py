@@ -1,4 +1,4 @@
-"""The primary module in {{ cookiecutter.project_slug }}."""
+"""The primary module in {{ cookiecutter.python_package_name }}."""
 
 import os
 {% if cookiecutter.use_alternative_union_syntax != "y" -%}

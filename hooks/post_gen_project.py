@@ -24,9 +24,9 @@ shutil.rmtree('licenses')
 
 {% if cookiecutter.include_executable != "y" -%}
 os.remove('.vscode/launch.json')
-os.remove('{{ cookiecutter.project_slug }}/__main__.py')
-os.remove('{{ cookiecutter.project_slug }}/cli.py')
-os.remove('{{ cookiecutter.project_slug }}/fire_workarounds.py')
+os.remove('{{ cookiecutter.python_package_name }}/__main__.py')
+os.remove('{{ cookiecutter.python_package_name }}/cli.py')
+os.remove('{{ cookiecutter.python_package_name }}/fire_workarounds.py')
 {% endif -%}
 
 {%- if cookiecutter.install_dependencies_now == "y" %}
@@ -47,7 +47,7 @@ try:
 except subprocess.CalledProcessError as e:
     sysexit_formatted([
         f'Pyenv failed with exit code {e.returncode}.',
-        'Go to the {{ cookiecutter.project_slug }}'
+        'Go to the {{ cookiecutter.pypi_package_name }}'
             ' directory and re-run:',
         *[
             f'    {command}'
@@ -75,7 +75,7 @@ except subprocess.CalledProcessError as e:
     print(
         f'Poetry failed with exit code {e.returncode}.',
         'Fix any issues, then go to the '
-        '{{ cookiecutter.project_slug }} directory and re-run:',
+        '{{ cookiecutter.pypi_package_name }} directory and re-run:',
         f'    {e.cmd}',
         file=sys.stderr,
         sep='\n',

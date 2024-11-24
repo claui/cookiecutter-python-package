@@ -27,9 +27,9 @@ index d40d99c..d1241e2 100644
  
  shutil.rmtree('licenses')
  
-@@ -28,56 +9,3 @@ os.remove('{{ cookiecutter.project_slug }}/__main__.py')
- os.remove('{{ cookiecutter.project_slug }}/cli.py')
- os.remove('{{ cookiecutter.project_slug }}/fire_workarounds.py')
+@@ -28,56 +9,3 @@ os.remove('{{ cookiecutter.python_package_name }}/__main__.py')
+ os.remove('{{ cookiecutter.python_package_name }}/cli.py')
+ os.remove('{{ cookiecutter.python_package_name }}/fire_workarounds.py')
  {% endif -%}
 -
 -{%- if cookiecutter.install_dependencies_now == "y" %}
@@ -50,7 +50,7 @@ index d40d99c..d1241e2 100644
 -except subprocess.CalledProcessError as e:
 -    sysexit_formatted([
 -        f'Pyenv failed with exit code {e.returncode}.',
--        'Go to the {{ cookiecutter.project_slug }}'
+-        'Go to the {{ cookiecutter.pypi_package_name }}'
 -            ' directory and re-run:',
 -        *[
 -            f'    {command}'
@@ -78,7 +78,7 @@ index d40d99c..d1241e2 100644
 -    print(
 -        f'Poetry failed with exit code {e.returncode}.',
 -        'Fix any issues, then go to the '
--        '{{ cookiecutter.project_slug }} directory and re-run:',
+-        '{{ cookiecutter.pypi_package_name }} directory and re-run:',
 -        f'    {e.cmd}',
 -        file=sys.stderr,
 -        sep='\n',

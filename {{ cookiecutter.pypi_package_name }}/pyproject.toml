@@ -10,7 +10,7 @@ disallow_subclassing_any = true
 disallow_untyped_calls = true
 disallow_untyped_decorators = true
 disallow_untyped_defs = true
-files = "{{ cookiecutter.project_slug }}/**/*.py,tests/**/*.py"
+files = "{{ cookiecutter.python_package_name }}/**/*.py,tests/**/*.py"
 implicit_reexport = false
 no_implicit_optional = true
 strict_equality = true
@@ -19,13 +19,10 @@ warn_return_any = true
 warn_unused_ignores = true
 
 [tool.poetry]
-name = "{{ cookiecutter.project_slug }}"
+name = "{{ cookiecutter.python_package_name }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
-readme = [
-    "README.md",
-    "USAGE.md",
-]
+readme = ["README.md", "USAGE.md"]
 authors = [
     "{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>",
 ]
@@ -60,8 +57,8 @@ types-colorama = "*"
 
 {% if cookiecutter.include_executable == "y" -%}
 [tool.poetry.scripts]
-{{ cookiecutter.executable_name }} = "{{ cookiecutter.project_slug }}.cli:run"
-hello = "{{ cookiecutter.project_slug }}.cli:hello"
+{{ cookiecutter.executable_name }} = "{{ cookiecutter.python_package_name }}.cli:run"
+hello = "{{ cookiecutter.python_package_name }}.cli:hello"
 
 {% endif -%}
 [tool.poe]
@@ -71,18 +68,18 @@ verbosity = -1
 tasks.cmd = "poe -v"
 tasks.help = "List available tasks"
 {% if cookiecutter.include_executable == "y" -%}
-cli.script = "{{ cookiecutter.project_slug }}.cli:run"
+cli.script = "{{ cookiecutter.python_package_name }}.cli:run"
 cli.help = "Run command line interface"
 {% endif -%}
 doc.cmd = "sphinx-build -aqEW -b man doc/sphinx build/man"
 doc.help = "Generate documentation"
 {% if cookiecutter.include_executable == "y" -%}
-hello.script = "{{ cookiecutter.project_slug }}.cli:hello"
+hello.script = "{{ cookiecutter.python_package_name }}.cli:hello"
 hello.help = "Run hello"
 {% endif -%}
-html.cmd = "pdoc {{ cookiecutter.project_slug }} !{{ cookiecutter.project_slug }}.settings"
+html.cmd = "pdoc {{ cookiecutter.python_package_name }} !{{ cookiecutter.python_package_name }}.settings"
 html.help = "Browse HTML documentation"
-linter.cmd = "pylint --enable-all-extensions {{ cookiecutter.project_slug }}"
+linter.cmd = "pylint --enable-all-extensions {{ cookiecutter.python_package_name }}"
 linter.help = "Check for style violations"
 man.cmd = "man build/man/
 {%- if cookiecutter.include_executable == "y" -%}

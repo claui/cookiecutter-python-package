@@ -1,6 +1,0 @@
-/src/
-/pkg/
-/{{ cookiecutter.project_slug }}/
-*.log
-*.pkg.*
-*.tar.*

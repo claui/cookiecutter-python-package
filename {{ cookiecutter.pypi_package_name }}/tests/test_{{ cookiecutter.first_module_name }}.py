@@ -2,7 +2,7 @@
 
 import pytest
 
-from {{ cookiecutter.project_slug }}.{{ cookiecutter.first_module_name }} import {{ cookiecutter.first_module_name.capitalize() }}
+from {{ cookiecutter.python_package_name }}.{{ cookiecutter.first_module_name }} import {{ cookiecutter.first_module_name.capitalize() }}
 
 
 @pytest.fixture(name='{{ cookiecutter.first_module_name }}')

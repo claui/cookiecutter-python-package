@@ -44,7 +44,7 @@ The default value is: `/path/to/qux`
 
 {{ cookiecutter.project_title }} supports the following environment variable:
 
-`{{ cookiecutter.project_slug | upper }}_DEBUG`
+`{{ cookiecutter.python_package_name | upper }}_DEBUG`
 : If set to a non-zero value, causes {{ cookiecutter.project_title }} to enable debug-level
 : logging.
 {% if cookiecutter.include_executable == "y" -%}

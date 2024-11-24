@@ -98,7 +98,7 @@ jobs:
     runs-on: ubuntu-22.04
     environment:
       name: testpypi
-      url: https://test.pypi.org/p/{{ cookiecutter.project_slug }}
+      url: https://test.pypi.org/p/{{ cookiecutter.pypi_package_name }}
     permissions:
       id-token: write
     steps:

@@ -18,14 +18,14 @@
   },
   "editor.formatOnSave": true,
   "files.associations": {
-    "**/?? cookiecutter.project_slug ??/**/*.json": "jinja-json",
-    "**/?? cookiecutter.project_slug ??/.vscode/settings.json": "jsonc",
-    "**/?? cookiecutter.project_slug ??/.python-version": "jinja",
-    "**/?? cookiecutter.project_slug ??/**/*.md": "jinja-md",
-    "**/?? cookiecutter.project_slug ??/**/*.py": "jinja-py",
-    "**/?? cookiecutter.project_slug ??/**/*.toml": "jinja-toml",
-    "**/?? cookiecutter.project_slug ??/**/*.yml": "jinja-yaml",
-    "**/?? cookiecutter.project_slug ??/**/PKGBUILD": "jinja-shell",
+    "**/?? cookiecutter.pypi_package_name ??/**/*.json": "jinja-json",
+    "**/?? cookiecutter.pypi_package_name ??/.vscode/settings.json": "jsonc",
+    "**/?? cookiecutter.pypi_package_name ??/.python-version": "jinja",
+    "**/?? cookiecutter.pypi_package_name ??/**/*.md": "jinja-md",
+    "**/?? cookiecutter.pypi_package_name ??/**/*.py": "jinja-py",
+    "**/?? cookiecutter.pypi_package_name ??/**/*.toml": "jinja-toml",
+    "**/?? cookiecutter.pypi_package_name ??/**/*.yml": "jinja-yaml",
+    "**/?? cookiecutter.pypi_package_name ??/**/PKGBUILD": "jinja-shell",
     "**/hooks/*_gen_project.py": "jinja-py"
   },
   "files.exclude": {

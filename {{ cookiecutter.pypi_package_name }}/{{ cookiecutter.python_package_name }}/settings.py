@@ -7,4 +7,4 @@ PROJECT_ROOT = Path(__file__).parent.parent.absolute()
 PACKAGE_ROOT = Path(__file__).parent.absolute()
 PYPROJECT_TOML = PROJECT_ROOT / 'pyproject.toml'
 
-debugMode = bool(os.getenv('{{ cookiecutter.project_slug | upper }}_DEBUG'))
+debugMode = bool(os.getenv('{{ cookiecutter.python_package_name | upper }}_DEBUG'))

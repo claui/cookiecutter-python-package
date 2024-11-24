@@ -28,7 +28,7 @@ source=("git+file://$(git rev-parse --show-toplevel)")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/{{ cookiecutter.project_slug }}"
+  cd "${srcdir}/{{ cookiecutter.pypi_package_name }}"
   printf "%s.r%s.%s" \
     "$(poetry version -s)" \
     "$(git rev-list --count HEAD)" \
@@ -36,7 +36,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/{{ cookiecutter.project_slug }}"
+  cd "${srcdir}/{{ cookiecutter.pypi_package_name }}"
   echo >&2 'Building wheel'
   python -m build --wheel --no-isolation
 
@@ -45,12 +45,12 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/{{ cookiecutter.project_slug }}"
+  cd "${srcdir}/{{ cookiecutter.pypi_package_name }}"
   python -m pytest
 }
 
 package() {
-  cd "${srcdir}/{{ cookiecutter.project_slug }}"
+  cd "${srcdir}/{{ cookiecutter.pypi_package_name }}"
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" dist/*.whl
