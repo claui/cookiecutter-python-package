@@ -2,9 +2,9 @@
 /debian/.debhelper/generated/
 /debian/debhelper-build-stamp
 /debian/files
-/debian/{{ cookiecutter.package_name }}/
-/debian/{{ cookiecutter.package_name }}.*.debhelper
-/debian/{{ cookiecutter.package_name }}.substvars
+/debian/{{ cookiecutter.pypi_package_name }}/
+/debian/{{ cookiecutter.pypi_package_name }}.*.debhelper
+/debian/{{ cookiecutter.pypi_package_name }}.substvars
 /dist/
 /.pc/
 /.venv/

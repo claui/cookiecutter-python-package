@@ -88,7 +88,7 @@ man.cmd = "man build/man/
 {%- if cookiecutter.include_executable == "y" -%}
     {{ cookiecutter.executable_name }}.1
 {%- else -%}
-    {{ cookiecutter.package_name }}.3
+    {{ cookiecutter.pypi_package_name }}.3
 {%- endif -%}
 "
 man.help = "Open manual page"

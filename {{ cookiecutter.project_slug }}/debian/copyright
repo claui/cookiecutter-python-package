@@ -1,7 +1,7 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: {{ cookiecutter.package_name }}
+Upstream-Name: {{ cookiecutter.pypi_package_name }}
 Upstream-Contact: {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>
-Source: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}
+Source: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}
 
 Files: *
 Copyright: {% now 'local', '%Y' %} {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>

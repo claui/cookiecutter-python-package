@@ -1,4 +1,4 @@
-Source: {{ cookiecutter.package_name }}
+Source: {{ cookiecutter.pypi_package_name }}
 # List of sections:
 # admin, cli-mono, comm, database, debug, devel, doc, editors, education,
 # electronics, embedded, fonts, games, gnome, gnu-r, gnustep, graphics,
@@ -18,13 +18,13 @@ Build-Depends: debhelper-compat (= 13),
                python3-poetry-core,
                python3-sphinx
 Standards-Version: 4.5.1
-Homepage: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}
-Vcs-Browser: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}
-Vcs-Git: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}.git
+Homepage: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}
+Vcs-Browser: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}
+Vcs-Git: https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}.git
 #Testsuite: autopkgtest-pkg-python
 Rules-Requires-Root: no
 
-Package: {{ cookiecutter.package_name }}
+Package: {{ cookiecutter.pypi_package_name }}
 Architecture: all
 Depends: ${python3:Depends}, ${misc:Depends}{% if cookiecutter.include_executable == "y" %}, python3-colorama, python3-fire{% endif %}
 Description: {{ cookiecutter.project_description }}

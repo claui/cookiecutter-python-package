@@ -1,0 +1,6 @@
+/src/
+/pkg/
+/{{ cookiecutter.pypi_package_name }}/
+*.log
+*.pkg.*
+*.tar.*

@@ -1,4 +1,4 @@
-{{ cookiecutter.package_name }} ({{ cookiecutter.project_version }}) UNRELEASED; urgency=medium
+{{ cookiecutter.pypi_package_name }} ({{ cookiecutter.project_version }}) UNRELEASED; urgency=medium
 
   * Initial release
 

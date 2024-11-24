@@ -59,13 +59,13 @@ this document.
 To install {{ cookiecutter.project_title }} from PyPI, open a shell and run:
 
 ```shell
-pip install {{ cookiecutter.package_name }}
+pip install {{ cookiecutter.pypi_package_name }}
 ```
 
 If that doesn’t work, try:
 
 ```shell
-python3 -m pip install {{ cookiecutter.package_name }}
+python3 -m pip install {{ cookiecutter.pypi_package_name }}
 ```
 
 ### Installing from the AUR
@@ -74,9 +74,9 @@ Direct your favorite
 [AUR helper](https://wiki.archlinux.org/title/AUR_helpers) to the
 `
 {%- if cookiecutter.include_executable == "y" -%}
-    {{ cookiecutter.package_name }}
+    {{ cookiecutter.pypi_package_name }}
 {%- else -%}
-    python-{{ cookiecutter.package_name }}
+    python-{{ cookiecutter.pypi_package_name }}
 {%- endif -%}
 ` package.
 
@@ -88,11 +88,11 @@ Direct your favorite
 ```
 
 {% endif -%}
-See [`USAGE.md`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}/blob/main/USAGE.md) or `man {{ cookiecutter.executable_name }}` for details.
+See [`USAGE.md`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}/blob/main/USAGE.md) or `man {{ cookiecutter.executable_name }}` for details.
 
 ## Contributing to {{ cookiecutter.project_title }}
 
-See [`CONTRIBUTING.md`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}/blob/main/CONTRIBUTING.md).
+See [`CONTRIBUTING.md`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}/blob/main/CONTRIBUTING.md).
 
 ## License
 

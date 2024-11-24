@@ -1,11 +1,12 @@
 # Maintainer: {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>
 
-pkgname={{ cookiecutter.package_name }}-git
+pkgname={{ cookiecutter.pypi_package_name }}-git
+_gitpkgname={{ cookiecutter.pypi_package_name }}
 pkgver=VERSION
 pkgrel=1
 pkgdesc='{{ cookiecutter.project_description }}'
 arch=('any')
-url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}'
+url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}'
 license=('{{ cookiecutter.spdx_license }}')
 depends=(
   'python-colorama'
@@ -21,14 +22,14 @@ makedepends=(
   'python-wheel'
 )
 checkdepends=('python-pytest')
-provides=('{{ cookiecutter.package_name }}')
-conflicts=('{{ cookiecutter.package_name }}')
+provides=('{{ cookiecutter.pypi_package_name }}')
+conflicts=('{{ cookiecutter.pypi_package_name }}')
 options=('!strip')
-source=("git+file://$(git rev-parse --show-toplevel)")
+source=("${_gitpkgname}::git+https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}.git")
 sha512sums=('SKIP')
 
 pkgver() {
-  cd "${srcdir}/{{ cookiecutter.project_slug }}"
+  cd "${srcdir}/${_gitpkgname}"
   printf "%s.r%s.%s" \
     "$(poetry version -s)" \
     "$(git rev-list --count HEAD)" \
@@ -36,7 +37,7 @@ pkgver() {
 }
 
 build() {
-  cd "${srcdir}/{{ cookiecutter.project_slug }}"
+  cd "${srcdir}/${_gitpkgname}"
   echo >&2 'Building wheel'
   python -m build --wheel --no-isolation
 
@@ -45,12 +46,12 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/{{ cookiecutter.project_slug }}"
+  cd "${srcdir}/${_gitpkgname}"
   python -m pytest
 }
 
 package() {
-  cd "${srcdir}/{{ cookiecutter.project_slug }}"
+  cd "${srcdir}/${_gitpkgname}"
 
   echo >&2 'Packaging the wheel'
   python -I -m installer --destdir="${pkgdir}" dist/*.whl

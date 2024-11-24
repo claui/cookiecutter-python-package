@@ -34,7 +34,7 @@ man_pages = [(
     {% if cookiecutter.include_executable == "y" -%}
     executable_name,
     {%- else -%}
-    '{{ cookiecutter.package_name }}',
+    '{{ cookiecutter.pypi_package_name }}',
     {%- endif %}
     description,
     [author],

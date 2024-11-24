@@ -1,11 +1,11 @@
 # Maintainer: {{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>
 
-pkgname={{ cookiecutter.package_name }}
+pkgname={{ cookiecutter.pypi_package_name }}
 pkgver={{ cookiecutter.project_version }}
 pkgrel=1
 pkgdesc='{{ cookiecutter.project_description }}'
 arch=('any')
-url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}'
+url='https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}'
 license=('{{ cookiecutter.spdx_license }}')
 depends=(
   'python-colorama'
@@ -21,7 +21,7 @@ makedepends=(
 )
 checkdepends=('python-pytest')
 options=('!strip')
-source=("${pkgname}-${pkgver}.tar.gz::https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.package_name }}/archive/v${pkgver}.tar.gz")
+source=("${pkgname}-${pkgver}.tar.gz::https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}/archive/v${pkgver}.tar.gz")
 sha512sums=('00000000')
 
 build() {

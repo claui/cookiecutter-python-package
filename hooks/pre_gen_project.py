@@ -8,7 +8,7 @@
 %}
 {{
     cookiecutter.update({
-        "package_name":
+        "pypi_package_name":
             cookiecutter.project_slug.replace('_', '-'),
         "spdx_license":
             spdx_license_dict[cookiecutter.project_license],
