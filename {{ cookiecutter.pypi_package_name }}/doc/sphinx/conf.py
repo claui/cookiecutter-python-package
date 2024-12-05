@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = '{{ cookiecutter.project_title }}'
-executable_name = '{{ cookiecutter.executable_name }}'
+executable = '{{ cookiecutter.executable_name }}'
 author = '{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>'
 description = '{{ cookiecutter.project_description }}'
 
@@ -29,18 +29,20 @@ exclude_patterns = []
 
 # Man page output
 
-man_pages = [(
-    'index',
-    {% if cookiecutter.include_executable == "y" -%}
-    executable_name,
-    {%- else -%}
-    '{{ cookiecutter.pypi_package_name }}',
-    {%- endif %}
-    description,
-    [author],
-    {% if cookiecutter.include_executable == "y" -%}
-    1,
-    {%- else -%}
-    3,
-    {%- endif %}
-)]
+man_pages = [
+    (
+        'usage',
+        {% if cookiecutter.include_executable == "y" -%}
+        executable,
+        {%- else -%}
+        '{{ cookiecutter.pypi_package_name }}',
+        {%- endif %}
+        description,
+        [author],
+        {% if cookiecutter.include_executable == "y" -%}
+        1,
+        {%- else -%}
+        3,
+        {%- endif %}
+    )
+]

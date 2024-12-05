@@ -5,5 +5,4 @@ Welcome to {{ cookiecutter.project_title }}'s documentation!
    :maxdepth: 2
    :caption: Contents:
 
-.. include:: ../../USAGE.md
-   :parser: myst_parser.sphinx_
+   usage
