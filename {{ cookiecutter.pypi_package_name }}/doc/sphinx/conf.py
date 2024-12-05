@@ -46,3 +46,5 @@ man_pages = [
         {%- endif %}
     )
 ]
+
+man_show_urls = True
