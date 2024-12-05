@@ -46,6 +46,11 @@ def skip_module(app, what, name, obj, skip, options):
     if what != 'module':
         return skip
     if name in [
+        {% if cookiecutter.include_executable == "y" -%}
+        '{{ cookiecutter.python_package_name }}.__main__',
+        '{{ cookiecutter.python_package_name }}.cli',
+        '{{ cookiecutter.python_package_name }}.fire_workarounds',
+        {% endif -%}
         '{{ cookiecutter.python_package_name }}.version',
         '{{ cookiecutter.python_package_name }}.settings',
     ]:
@@ -58,7 +63,15 @@ def setup(sphinx):
 
 
 templates_path = []
-exclude_patterns = []
+exclude_patterns = [
+    {% if cookiecutter.include_executable == "y" -%}
+    '**/{{ cookiecutter.python_package_name }}/__main__/**',
+    '**/{{ cookiecutter.python_package_name }}/cli/**',
+    '**/{{ cookiecutter.python_package_name }}/fire_workarounds/**',
+    {% endif -%}
+    '**/{{ cookiecutter.python_package_name }}/version/**',
+    '**/{{ cookiecutter.python_package_name }}/settings/**',
+]
 
 # Man page output
 
