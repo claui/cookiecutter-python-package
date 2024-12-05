@@ -27,7 +27,7 @@ actions by Marketplace verified creators*.
 Then add the following actions to the *Allow specified actions and
 reusable workflows* field:
 
-```plain
+```text
 EndBug/add-and-commit@v9,
 snok/install-poetry@v1,
 softprops/action-gh-release@v1,
@@ -48,6 +48,10 @@ of your repository. Click the small gear icon that appears in the
 upper right corner to bring up the Repository settings dialog.
 In the *Include in the home page* section, disable Packages but keep
 Releases and Deployments enabled.
+
+Finally, go to the
+[Read the Docs import dashboard](https://app.readthedocs.org/dashboard/import/)
+and import your GitHub project to Read the Docs.
 
 Now that you’ve done everything in this section, delete the section from
 this document.
@@ -88,7 +92,13 @@ Direct your favorite
 ```
 
 {% endif -%}
-See [`USAGE.md`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}/blob/main/USAGE.md) or `man {{ cookiecutter.executable_name }}` for details.
+See
+[`USAGE.md`](https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}/blob/main/USAGE.md)
+or `man {{ cookiecutter.executable_name }}` for details.
+
+You can also browse the
+[API reference on Read the Docs](https://{{ cookiecutter.pypi_package_name }}.readthedocs.io/en/stable/autoapi/{{ cookiecutter.python_package_name }}/)
+for details.
 
 ## Contributing to {{ cookiecutter.project_title }}
 

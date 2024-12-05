@@ -24,6 +24,7 @@
     "**/?? cookiecutter.pypi_package_name ??/**/*.md": "jinja-md",
     "**/?? cookiecutter.pypi_package_name ??/**/*.py": "jinja-py",
     "**/?? cookiecutter.pypi_package_name ??/**/*.toml": "jinja-toml",
+    "**/?? cookiecutter.pypi_package_name ??/**/*.yaml": "jinja-yaml",
     "**/?? cookiecutter.pypi_package_name ??/**/*.yml": "jinja-yaml",
     "**/?? cookiecutter.pypi_package_name ??/**/PKGBUILD": "jinja-shell",
     "**/hooks/*_gen_project.py": "jinja-py"

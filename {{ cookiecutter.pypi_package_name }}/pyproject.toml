@@ -34,6 +34,8 @@ classifiers = [
     "Operating System :: POSIX :: Linux",
     "Topic :: Utilities",
 ]
+documentation = "https://{{ cookiecutter.pypi_package_name }}.readthedocs.io/en/stable/"
+repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}"
 
 [tool.poetry.dependencies]
 python = ">={{ cookiecutter.python_version }}"
@@ -45,15 +47,18 @@ fire = "*"
 [tool.poetry.group.dev.dependencies]
 autopep8 = "*"
 mypy = ">=1.8"
-myst-parser = ">=2.0.0"
-pdoc = ">=14.0"
 poethepoet = ">=0.24"
 pylint = ">=3.0"
 pytest = "*"
-sphinx = ">=7.1.2,<7.2.0"
 {%- if cookiecutter.include_executable == "y" %}
 types-colorama = "*"
 {%- endif %}
+
+[tool.poetry.group.doc.dependencies]
+myst-parser = ">=2.0.0"
+sphinx = ">=7.1.2,<7.2.0"
+sphinx-autoapi = ">=3.3"
+sphinx-rtd-theme = ">=3.0"
 
 {% if cookiecutter.include_executable == "y" -%}
 [tool.poetry.scripts]
@@ -71,13 +76,18 @@ tasks.help = "List available tasks"
 cli.script = "{{ cookiecutter.python_package_name }}.cli:run"
 cli.help = "Run command line interface"
 {% endif -%}
-doc.cmd = "sphinx-build -aqEW -b man doc/sphinx build/man"
+doc.shell = """
+    set -ex
+    rm -rf build/html build/man
+    sphinx-build -aqEW -b html doc/sphinx build/html
+    sphinx-build -qW -b man doc/sphinx build/man
+"""
 doc.help = "Generate documentation"
 {% if cookiecutter.include_executable == "y" -%}
 hello.script = "{{ cookiecutter.python_package_name }}.cli:hello"
 hello.help = "Run hello"
 {% endif -%}
-html.cmd = "pdoc {{ cookiecutter.python_package_name }} !{{ cookiecutter.python_package_name }}.settings"
+html.script = "webbrowser:open('build/html/index.html')"
 html.help = "Browse HTML documentation"
 linter.cmd = "pylint --enable-all-extensions {{ cookiecutter.python_package_name }}"
 linter.help = "Check for style violations"

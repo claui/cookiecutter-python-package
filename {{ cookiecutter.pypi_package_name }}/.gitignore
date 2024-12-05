@@ -6,6 +6,7 @@
 /debian/{{ cookiecutter.pypi_package_name }}.*.debhelper
 /debian/{{ cookiecutter.pypi_package_name }}.substvars
 /dist/
+/doc/sphinx/autoapi/
 /.pc/
 /.venv/
 *.egg-info

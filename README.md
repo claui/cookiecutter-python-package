@@ -71,7 +71,9 @@ The Cookiecutter template will give you:
 
 - a pytest script and default configuration;
 
-- a `pdoc` setup to generate documentation;
+- a Sphinx setup to generate HTML documentation and a manual page;
+
+- a configuration file for Read the Docs;
 
 - a set of `poe` tasks for running the module scripts, tests and the
   linter (for details, run `poetry run poe tasks`);

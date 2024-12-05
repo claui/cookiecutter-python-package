@@ -17,6 +17,8 @@ makedepends=(
   'python-myst-parser'
   'python-poetry-core'
   'python-sphinx'
+  'python-sphinx-autoapi'
+  'python-sphinx_rtd_theme'
   'python-wheel'
 )
 checkdepends=('python-pytest')
