@@ -15,5 +15,6 @@ def test_hello({{ cookiecutter.first_module_name }}: {{ cookiecutter.first_modul
 
 
 def test_hello_with_author_name({{ cookiecutter.first_module_name }}: {{ cookiecutter.first_module_name.capitalize() }}) -> None:
-    assert {{ cookiecutter.first_module_name }}.hello('{{ cookiecutter.author_full_name }}') \
-        == 'Hello, {{ cookiecutter.author_full_name }}!'
+    assert (
+        {{ cookiecutter.first_module_name }}.hello('{{ cookiecutter.author_full_name }}') == 'Hello, {{ cookiecutter.author_full_name }}!'
+    )

@@ -58,6 +58,9 @@ jobs:
       - name: Run linter
         run: poetry run poe linter
 
+      - name: Check for formatting style violations not covered by the linter
+        run: poetry run poe formatcheck
+
       - name: Run unit tests
         run: poetry run poe tests
 
