@@ -23,9 +23,7 @@ name = "{{ cookiecutter.python_package_name }}"
 version = "{{ cookiecutter.project_version }}"
 description = "{{ cookiecutter.project_description }}"
 readme = ["README.md", "USAGE.md"]
-authors = [
-    "{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>",
-]
+authors = ["{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>"]
 license = "{{ cookiecutter.project_license }}"
 # See https://pypi.org/pypi?%3Aaction=list_classifiers
 classifiers = [
@@ -43,6 +41,7 @@ python = ">={{ cookiecutter.python_version }}"
 colorama = "*"
 fire = "*"
 {%- endif %}
+pyxdg = "*"
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "*"
