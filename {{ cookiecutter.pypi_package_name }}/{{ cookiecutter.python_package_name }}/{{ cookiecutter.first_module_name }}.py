@@ -12,7 +12,7 @@ from .logging import get_logger
 logger = get_logger(__name__)
 
 
-class {{ cookiecutter.first_module_name.capitalize() }}:
+class {{ cookiecutter.first_module_name.capitalize() }}:  # pylint: disable=too-few-public-methods
     """
     :param foobar:
         The Foobar to connect to.
