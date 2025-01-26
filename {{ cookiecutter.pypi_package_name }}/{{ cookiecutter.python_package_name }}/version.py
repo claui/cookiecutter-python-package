@@ -26,12 +26,15 @@ def version() -> Optional[str]:
         with open(PYPROJECT_TOML, encoding='utf-8') as pyproject_toml:
             # Parse manually due to Debian 11 missing a `tomli` package
             version_lines = (
-                line for line in pyproject_toml
-                if line.startswith('version '))
-            return next(version_lines).split('=')[1].strip("'\"\n ")
+                line
+                for line in pyproject_toml
+                if line.startswith('version ')
+            )
+            return next(version_lines).split('=')[1].strip('\'"\n ')
 
     with suppress(FileNotFoundError):
         return importlib.metadata.version(
-            __package__ or __name__.split('.', maxsplit=1)[0])
+            __package__ or __name__.split('.', maxsplit=1)[0]
+        )
 
     return None

@@ -50,6 +50,7 @@ mypy = ">=1.8"
 poethepoet = ">=0.24"
 pylint = ">=3.0"
 pytest = "*"
+ruff = "*"
 {%- if cookiecutter.include_executable == "y" %}
 types-colorama = "*"
 {%- endif %}
@@ -83,6 +84,8 @@ doc.shell = """
     sphinx-build -qW -b man doc/sphinx build/man
 """
 doc.help = "Generate documentation"
+formatcheck.cmd = "ruff format --check"
+formatcheck.help = "Check for formatting style violations not covered by the linter"
 {% if cookiecutter.include_executable == "y" -%}
 hello.script = "{{ cookiecutter.python_package_name }}.cli:hello"
 hello.help = "Run hello"

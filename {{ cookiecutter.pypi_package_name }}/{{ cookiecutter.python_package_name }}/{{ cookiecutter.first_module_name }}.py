@@ -26,25 +26,31 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
         The default value is: `/path/to/qux`
     """
 
-    def __init__(self,
+    def __init__(
+        self,
         {% if cookiecutter.use_alternative_union_syntax == "y" -%}
-        foobar: str | None=None,
+        foobar: str | None = None,
         {%- else -%}
-        foobar: Optional[str]=None,
+        foobar: Optional[str] = None,
         {%- endif %}
-        qux: str='/path/to/qux',
+        qux: str = '/path/to/qux',
     ) -> None:
-        if (merged_foobar := foobar or os.environ.get('FOOBAR', None)) is None:
+        if (
+            merged_foobar := foobar or os.environ.get('FOOBAR', None)
+        ) is None:
             {% if cookiecutter.include_executable == "y" -%}
-            raise CliError('The `--foobar` switch must be given if ' +
-                'no `FOOBAR` environment variable is defined.')
+            raise CliError(
+                'The `--foobar` switch must be given if '
+                + 'no `FOOBAR` environment variable is defined.'
+            )
             {%- else -%}
-            raise ValueError('The `foobar` argument must be given if ' +
-                'no `FOOBAR` environment variable is defined.')
+            raise ValueError(
+                'The `foobar` argument must be given if '
+                + 'no `FOOBAR` environment variable is defined.'
+            )
             {%- endif %}
         self._foobar = merged_foobar
         self._qux = qux
-
 
     def hello(self, name: str = 'world') -> str:  # pylint: disable=no-self-use
         """Says hello to someone.
@@ -63,11 +69,9 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
         logger.debug('Printing name: %s', name)
         return f'Hello, {name}!'
 
-
     def off(self) -> None:  # pylint: disable=no-self-use
         """Disables {{ cookiecutter.project_title }}."""
         logger.info('Disabling {{ cookiecutter.project_title }}')
-
 
     def on(self) -> None:  # pylint: disable=no-self-use
         """Enables {{ cookiecutter.project_title }}."""
@@ -77,9 +81,9 @@ class {{ cookiecutter.first_module_name.capitalize() }}:
 def hello(
     name: str = 'world',
     {% if cookiecutter.use_alternative_union_syntax == "y" -%}
-    foobar: str | None=None,
+    foobar: str | None = None,
     {%- else -%}
-    foobar: Optional[str]=None,
+    foobar: Optional[str] = None,
     {%- endif %}
     qux: str = '/path/to/qux',
 ) -> str:

@@ -42,6 +42,7 @@ myst_enable_extensions = [
     'deflist',
 ]
 
+
 def skip_module(app, what, name, obj, skip, options):
     if what != 'module':
         return skip

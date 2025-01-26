@@ -147,6 +147,15 @@ To execute the linter, run:
 poetry run poe linter
 ```
 
+### Running the code formatting style check
+
+To check the code base for formatting style violations that are not
+covered by the linter, run:
+
+```shell
+poetry run poe formatcheck
+```
+
 ### Running the static type check
 
 To execute the static type check, run:
