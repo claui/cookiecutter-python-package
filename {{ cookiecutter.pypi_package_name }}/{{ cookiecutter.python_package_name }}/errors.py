@@ -2,5 +2,5 @@
 {% if cookiecutter.include_executable == "y" %}
 
 class CliError(Exception):
-    """An user-facing error message."""
+    """A user-facing error message."""
 {% endif -%}
