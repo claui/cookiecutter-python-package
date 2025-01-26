@@ -50,6 +50,9 @@ def skip_module(app, what, name, obj, skip, options):
         {% if cookiecutter.include_executable == "y" -%}
         '{{ cookiecutter.python_package_name }}.__main__',
         '{{ cookiecutter.python_package_name }}.cli',
+        {% endif -%}
+        '{{ cookiecutter.python_package_name }}.config',
+        {% if cookiecutter.include_executable == "y" -%}
         '{{ cookiecutter.python_package_name }}.fire_workarounds',
         {% endif -%}
         '{{ cookiecutter.python_package_name }}.version',
@@ -68,6 +71,9 @@ exclude_patterns = [
     {% if cookiecutter.include_executable == "y" -%}
     '**/{{ cookiecutter.python_package_name }}/__main__/**',
     '**/{{ cookiecutter.python_package_name }}/cli/**',
+    {% endif -%}
+    '**/{{ cookiecutter.python_package_name }}/config/**',
+    {% if cookiecutter.include_executable == "y" -%}
     '**/{{ cookiecutter.python_package_name }}/fire_workarounds/**',
     {% endif -%}
     '**/{{ cookiecutter.python_package_name }}/version/**',

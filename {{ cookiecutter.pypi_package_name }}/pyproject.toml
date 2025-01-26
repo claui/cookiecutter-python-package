@@ -41,6 +41,7 @@ python = ">={{ cookiecutter.python_version }}"
 colorama = "*"
 fire = "*"
 {%- endif %}
+pyxdg = "*"
 
 [tool.poetry.group.dev.dependencies]
 autopep8 = "*"
