@@ -14,11 +14,7 @@
     {%- else -%}
     "replay": "cookiecutter_replay/{{ cookiecutter._repo_dir.split('/')[-1] }}.json",
     {%- endif %}
-    "patches": [
-      "patches/disable-install-step.patch"
-    ],
-    "nextPatches": [
-      "patches/disable-install-step.patch"
-    ]
+    "patches": [],
+    "nextPatches": []
   }
 }

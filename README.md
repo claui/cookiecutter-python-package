@@ -65,7 +65,7 @@ The Cookiecutter template will give you:
 
 - a global settings file that all modules can import;
 
-- a `pyproject.toml` file and an initial Poetry lockfile;
+- a `pyproject.toml` file and an initial `uv.lock` file;
 
 - a default linter configuration;
 
@@ -76,7 +76,7 @@ The Cookiecutter template will give you:
 - a configuration file for Read the Docs;
 
 - a set of `poe` tasks for running the module scripts, tests and the
-  linter (for details, run `poetry run poe tasks`);
+  linter (for details, run `uv run poe tasks`);
 
 - a virtual environment with initial dependencies installed and
   ready to use;
@@ -95,109 +95,28 @@ The Cookiecutter template will give you:
 
 To use this Cookiecutter template, you need:
 
-1. The Python version manager `pyenv`.
+1. The Python project management tool [uv](https://docs.astral.sh/uv).
 
-2. A system-wide Python installation.
+2. Optionally, Cookiecutter version 2.6.0 or newer.  
 
-3. Cookiecutter version 2.6.0 or newer.
+### Installing uv
 
-4. The Python dependency manager `poetry`.
+To install uv, see its
+[installation instructions](https://docs.astral.sh/uv/getting-started/installation/).
 
-### Installing pyenv
-
-You need the Python version manager `pyenv` so you can set up your
-generated package, and to make sure you can always keep that package
-up and running, regardless of your system Python.
-
-#### Installing pyenv on Windows
-
-While `pyenv` doesn’t support Windows, you can use a drop-in
-replacement called `pyenv-win`.
-
-To install `pyenv-win` on Windows, go to
-[github.com/pyenv-win/pyenv-win](https://github.com/pyenv-win/pyenv-win#installation)
-and follow one of the installation methods.
-
-#### Installing pyenv on Linux
-
-To install `pyenv` on Linux or WSL2, first make sure Python 3 is
-installed. Then follow the _Basic GitHub Checkout_ method described
-at [github.com/pyenv/pyenv](https://github.com/pyenv/pyenv#basic-github-checkout).
-
-#### Installing pyenv on macOS
-
-To install `pyenv` on macOS, run:
+To verify uv is working, run:
 
 ```shell
-brew install pyenv
+uv
 ```
-
-#### Checking your system-wide pyenv installation
-
-To verify your `pyenv` is working, run:
-
-```shell
-pyenv --version
-```
-
-### Checking your system-wide Python installation
-
-Make sure you have Python 3.8 or higher installed on your system
-and available in your PATH.
-
-To check, run:
-
-```shell
-python --version
-```
-
-If that fails, try:
-
-```shell
-python3 --version
-```
-
-Proceed after you’ve confirmed one of those to work.
 
 ### Installing Cookiecutter
 
-To install Cookiecutter, follow Cookiecutter’s [installation
+Installing Cookiecutter is optional, because you can run
+`uvx cookiecutter` without installing Cookiecutter.
+
+If you prefer to install Cookiecutter, follow Cookiecutter’s [installation
 instructions](https://cookiecutter.readthedocs.io/en/stable/installation.html).
-
-### Installing Poetry
-
-You’ll need `poetry` to manage the generated Python package.
-
-#### Installing Poetry on Windows
-
-To install Poetry on Windows, use one of the
-[installation methods](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
-described in Poetry’s documentation.
-
-#### Installing Poetry on Linux
-
-If you’re on Linux or WSL2, use your system package manager to
-install Poetry.
-
-Alternatively, use one of the
-[installation methods](https://python-poetry.org/docs/master/#installing-with-the-official-installer)
-described in Poetry’s documentation.
-
-#### Installing Poetry on macOS
-
-To install Poetry on macOS, run:
-
-```shell
-brew install poetry
-```
-
-#### Checking your Poetry installation
-
-To verify Poetry is working, run:
-
-```shell
-poetry --version
-```
 
 ### Basic usage
 
@@ -205,7 +124,7 @@ To run the template generator, make sure you have a working
 Cookiecutter installation. Then run:
 
 ```shell
-cookiecutter gh:claui/cookiecutter-python-package
+uvx cookiecutter gh:claui/cookiecutter-python-package
 ```
 
 ### Alternative usage
@@ -221,12 +140,12 @@ abbreviations:
 Then, to generate a project, run:
 
 ```shell
-cookiecutter python
+uvx cookiecutter python
 ```
 
 ## License
 
-Copyright (c) 2021 – 2024 Claudia Pellegrino <clau@tiqua.de>
+Copyright (c) 2021 – 2025 Claudia Pellegrino <clau@tiqua.de>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.

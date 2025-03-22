@@ -5,7 +5,7 @@ on:
   - workflow_call
 
 env:
-  CI_POETRY_VERSION: "1.7.1"
+  CI_UV_VERSION: "0.6.9"
 
 jobs:
   ci-checks:
@@ -15,54 +15,25 @@ jobs:
       - name: Check out source tree
         uses: actions/checkout@v4
 
-      - name: Load cached Poetry installation
-        id: load-cached-poetry
-        uses: actions/cache@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
-          path: ~/.local
-          key: poetry-release-v{{ '${{' }} env.CI_POETRY_VERSION }}
-
-      - name: Update PATH
-        if: steps.load-cached-poetry.outputs.cache-hit == 'true'
-        run: |
-          echo ~/.local/bin >> "${GITHUB_PATH}"
-
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        if: steps.load-cached-poetry.outputs.cache-hit != 'true'
-        with:
-          version: {{ '${{' }} env.CI_POETRY_VERSION }}
-          virtualenvs-create: true
-          virtualenvs-in-project: true
+          version: env.CI_UV_VERSION
 
       - name: Print current package version
-        run: poetry version --no-ansi --no-interaction
-
-      - name: Use specified Python version
-        uses: actions/setup-python@v5
-        with:
-          cache: poetry
-          python-version-file: .python-version
-
-      - name: Install dependencies
-        # See also:
-        # https://github.com/python-poetry/poetry/issues/7184
-        run: poetry install --no-ansi --no-interaction --no-root
-
-      - name: Install target package
-        run: poetry install --no-ansi --no-interaction
+        run: uv tree -d 0
 
       - name: Run static typechecking
-        run: poetry run poe typecheck
+        run: uv run poe typecheck
 
       - name: Run linter
-        run: poetry run poe linter
+        run: uv run poe linter
 
       - name: Check for formatting style violations not covered by the linter
-        run: poetry run poe formatcheck
+        run: uv run poe formatcheck
 
       - name: Run unit tests
-        run: poetry run poe tests
+        run: uv run poe tests
 
       - name: Run man page and HTML documentation generator
-        run: poetry run poe doc
+        run: uv run poe doc

@@ -12,7 +12,7 @@
   },
   "code-runner.clearPreviousOutput": true,
   "code-runner.executorMap": {
-    "python": "poetry run python"
+    "python": "uv run python"
   },
   "code-runner.ignoreSelection": true,
   "code-runner.saveFileBeforeRun": true,
