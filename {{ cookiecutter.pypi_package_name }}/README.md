@@ -28,8 +28,8 @@ Then add the following actions to the *Allow specified actions and
 reusable workflows* field:
 
 ```text
+astral-sh/setup-uv@v5,
 EndBug/add-and-commit@v9,
-snok/install-poetry@v1,
 softprops/action-gh-release@v1,
 ```
 

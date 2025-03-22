@@ -5,11 +5,11 @@ on:
     inputs:
       target_version:
         description: |-
-          New version number for the release (or a Poetry bump rule)
+          New version number for the release (or `major`, `minor`, `patch`)
         required: true
 
 env:
-  CI_POETRY_VERSION: "1.7.1"
+  CI_UV_VERSION: "0.6.9"
 
 jobs:
   bump-version:
@@ -20,39 +20,24 @@ jobs:
       - name: Check out source tree
         uses: actions/checkout@v4
 
-      - name: Load cached Poetry installation
-        id: load-cached-poetry
-        uses: actions/cache@v4
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
-          path: ~/.local
-          key: poetry-release-v{{ '${{' }} env.CI_POETRY_VERSION }}
-
-      - name: Update PATH
-        if: steps.load-cached-poetry.outputs.cache-hit == 'true'
-        run: |
-          echo ~/.local/bin >> "${GITHUB_PATH}"
-
-      - name: Install Poetry
-        uses: snok/install-poetry@v1
-        if: steps.load-cached-poetry.outputs.cache-hit != 'true'
-        with:
-          version: {{ '${{' }} env.CI_POETRY_VERSION }}
-          virtualenvs-create: true
-          virtualenvs-in-project: true
+          version: env.CI_UV_VERSION
 
       - name: Print current package version
-        run: poetry version --no-ansi --no-interaction
+        run: uv tree -d 0
 
       - name: Bump package version
         env:
           TARGET_VERSION: {{ '${{' }} inputs.target_version }}
-        run: poetry version --no-ansi --no-interaction "${TARGET_VERSION}"
+        run: uvx bump-my-version bump "${TARGET_VERSION}"
 
       - id: gather_new_version
         name: Gather bumped package version
         run: |
           env -i >> "${GITHUB_OUTPUT}" \
-            "new_version=$(poetry version --no-ansi --no-interaction --short)"
+            "new_version=$(uvx bump-my-version show current_version)"
 
       - name: Print bumped package version
         env:

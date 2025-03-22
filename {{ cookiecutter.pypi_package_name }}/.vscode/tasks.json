@@ -7,7 +7,7 @@
     {
       "label": "{{ cookiecutter.project_title }}: Show usage help",
       "type": "shell",
-      "command": "poetry",
+      "command": "uv",
       "args": [
         "run",
         "poe",
@@ -23,7 +23,7 @@
     {
       "label": "{{ cookiecutter.project_title }}: Run hello",
       "type": "shell",
-      "command": "poetry",
+      "command": "uv",
       "args": [
         "run",
         "poe",
@@ -42,7 +42,7 @@
     {
       "label": "{{ cookiecutter.project_title }}: Run hello '{{ cookiecutter.author_full_name }}'",
       "type": "shell",
-      "command": "poetry",
+      "command": "uv",
       "args": [
         "run",
         "poe",
@@ -60,7 +60,7 @@
     {
       "label": "{{ cookiecutter.project_title }}: Install/update local dependencies",
       "type": "shell",
-      "command": "poetry",
+      "command": "uv",
       "args": [
         "update"
       ],
@@ -74,7 +74,7 @@
     {
       "label": "{{ cookiecutter.project_title }}: Browse HTML documentation",
       "type": "process",
-      "command": "poetry",
+      "command": "uv",
       "args": [
         "run",
         "poe",
@@ -90,7 +90,7 @@
     {
       "label": "{{ cookiecutter.project_title }}: Run static type checker",
       "type": "process",
-      "command": "poetry",
+      "command": "uv",
       "args": [
         "run",
         "poe",

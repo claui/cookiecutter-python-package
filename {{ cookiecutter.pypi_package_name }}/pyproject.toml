@@ -1,6 +1,81 @@
+[project]
+name = "{{ cookiecutter.python_package_name }}"
+version = "{{ cookiecutter.project_version }}"
+description = "{{ cookiecutter.project_description }}"
+readme = "README.md"
+authors = [{ name = "{{ cookiecutter.author_full_name }}", email = "{{ cookiecutter.author_email }}" }]
+license = "{{ cookiecutter.project_license }}"
+# See https://pypi.org/pypi?%3Aaction=list_classifiers
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Operating System :: MacOS",
+    "Operating System :: POSIX :: Linux",
+    "Topic :: Utilities",
+]
+requires-python = ">={{ cookiecutter.python_version }}"
+
+dependencies = [
+{%- if cookiecutter.include_executable == "y" %}
+    "colorama",
+    "fire",
+{%- endif %}
+    "pyxdg",
+]
+
 [build-system]
-requires = ["poetry-core>=1.9.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "autopep8",
+    "mypy",
+    "poethepoet",
+    "pylint",
+    "ruff",
+{%- if cookiecutter.include_executable == "y" %}
+    "types-colorama",
+{%- endif %}
+]
+doc = [
+    "myst-parser",
+    "sphinx",
+    "sphinx-autoapi",
+    "sphinx-rtd-theme",
+]
+test = ["pytest"]
+
+{% if cookiecutter.include_executable == "y" -%}
+[project.scripts]
+{{ cookiecutter.executable_name }} = "{{ cookiecutter.python_package_name }}.cli:run"
+hello = "{{ cookiecutter.python_package_name }}.cli:hello"
+
+{% endif -%}
+[project.urls]
+documentation = "https://{{ cookiecutter.pypi_package_name }}.readthedocs.io/en/stable/"
+source = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}"
+
+[tool.bumpversion]
+current_version = "{{ cookiecutter.project_version }}"
+parse = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)"
+serialize = ["{major}.{minor}.{patch}"]
+search = "{current_version}"
+replace = "{new_version}"
+regex = false
+ignore_missing_version = false
+ignore_missing_files = false
+tag = false
+sign_tags = false
+tag_name = "v{new_version}"
+tag_message = "Bump version to {new_version}"
+allow_dirty = true
+commit = false
+message = "Bump version to {new_version}"
+moveable_tags = []
+commit_args = ""
+setup_hooks = []
+pre_commit_hooks = []
+post_commit_hooks = []
 
 [tool.mypy]
 check_untyped_defs = true
@@ -18,54 +93,6 @@ warn_redundant_casts = true
 warn_return_any = true
 warn_unused_ignores = true
 
-[tool.poetry]
-name = "{{ cookiecutter.python_package_name }}"
-version = "{{ cookiecutter.project_version }}"
-description = "{{ cookiecutter.project_description }}"
-readme = ["README.md", "USAGE.md"]
-authors = ["{{ cookiecutter.author_full_name }} <{{ cookiecutter.author_email }}>"]
-license = "{{ cookiecutter.project_license }}"
-# See https://pypi.org/pypi?%3Aaction=list_classifiers
-classifiers = [
-    "Development Status :: 3 - Alpha",
-    "Operating System :: MacOS",
-    "Operating System :: POSIX :: Linux",
-    "Topic :: Utilities",
-]
-documentation = "https://{{ cookiecutter.pypi_package_name }}.readthedocs.io/en/stable/"
-repository = "https://github.com/{{ cookiecutter.github_username }}/{{ cookiecutter.pypi_package_name }}"
-
-[tool.poetry.dependencies]
-python = ">={{ cookiecutter.python_version }}"
-{%- if cookiecutter.include_executable == "y" %}
-colorama = "*"
-fire = "*"
-{%- endif %}
-pyxdg = "*"
-
-[tool.poetry.group.dev.dependencies]
-autopep8 = "*"
-mypy = ">=1.8"
-poethepoet = ">=0.24"
-pylint = ">=3.0"
-pytest = "*"
-ruff = "*"
-{%- if cookiecutter.include_executable == "y" %}
-types-colorama = "*"
-{%- endif %}
-
-[tool.poetry.group.doc.dependencies]
-myst-parser = ">=2.0.0"
-sphinx = ">=7.1.2,<7.2.0"
-sphinx-autoapi = ">=3.3"
-sphinx-rtd-theme = ">=3.0"
-
-{% if cookiecutter.include_executable == "y" -%}
-[tool.poetry.scripts]
-{{ cookiecutter.executable_name }} = "{{ cookiecutter.python_package_name }}.cli:run"
-hello = "{{ cookiecutter.python_package_name }}.cli:hello"
-
-{% endif -%}
 [tool.poe]
 verbosity = -1
 
@@ -118,3 +145,7 @@ line-length = 72
 
 [tool.ruff.format]
 quote-style = "single"
+
+[tool.uv]
+default-groups = ["dev", "doc", "test"]
+fork-strategy = "fewest"

@@ -35,10 +35,10 @@ if '{{ cookiecutter.python_package_name }}' \
         == '{{ cookiecutter.first_module_name }}':
     sys.exit('Package name and first module name cannot be the same')
 
-if not shutil.which('poetry'):
+if not shutil.which('uv'):
     sys.exit(
         """
-This Cookiecutter template depends on Poetry.
-For instructions on how to install Poetry, see `README.md`.
+This Cookiecutter template depends on uv.
+For instructions on how to install uv, see `README.md`.
 """
     )

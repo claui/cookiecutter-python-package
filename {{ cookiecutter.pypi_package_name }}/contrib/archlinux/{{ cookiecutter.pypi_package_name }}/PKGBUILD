@@ -13,9 +13,9 @@ depends=(
 )
 makedepends=(
   'python-build'
+  'python-hatchling'
   'python-installer'
   'python-myst-parser'
-  'python-poetry-core'
   'python-sphinx'
   'python-sphinx-autoapi'
   'python-sphinx_rtd_theme'

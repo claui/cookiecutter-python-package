@@ -14,9 +14,9 @@ depends=(
 makedepends=(
   'git'
   'python-build'
+  'python-hatch'
   'python-installer'
   'python-myst-parser'
-  'python-poetry'
   'python-sphinx'
   'python-sphinx-autoapi'
   'python-sphinx_rtd_theme'
@@ -32,7 +32,7 @@ sha512sums=('SKIP')
 pkgver() {
   cd "${srcdir}/{{ cookiecutter.pypi_package_name }}"
   printf "%s.r%s.%s" \
-    "$(poetry version -s)" \
+    "$(hatch version)" \
     "$(git rev-list --count HEAD)" \
     "$(git rev-parse --short HEAD)"
 }
