@@ -18,7 +18,7 @@ jobs:
       - name: Install uv
         uses: astral-sh/setup-uv@v5
         with:
-          version: ${{ env.CI_UV_VERSION }}
+          version: {{ '${{' }} env.CI_UV_VERSION }}
 
       - name: Print current package version
         run: uv tree -d 0
