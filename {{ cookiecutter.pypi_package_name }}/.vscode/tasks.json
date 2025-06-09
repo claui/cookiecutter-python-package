@@ -6,7 +6,7 @@
     {% if cookiecutter.include_executable == "y" -%}
     {
       "label": "{{ cookiecutter.project_title }}: Show usage help",
-      "type": "shell",
+      "type": "process",
       "command": "uv",
       "args": [
         "run",
@@ -22,7 +22,7 @@
     },
     {
       "label": "{{ cookiecutter.project_title }}: Run hello",
-      "type": "shell",
+      "type": "process",
       "command": "uv",
       "args": [
         "run",
@@ -41,7 +41,7 @@
     },
     {
       "label": "{{ cookiecutter.project_title }}: Run hello '{{ cookiecutter.author_full_name }}'",
-      "type": "shell",
+      "type": "process",
       "command": "uv",
       "args": [
         "run",
@@ -59,7 +59,7 @@
     {% endif -%}
     {
       "label": "{{ cookiecutter.project_title }}: Install/update local dependencies",
-      "type": "shell",
+      "type": "process",
       "command": "uv",
       "args": [
         "update"
