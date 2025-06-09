@@ -2,7 +2,11 @@
 
 import json
 import os
+{% if cookiecutter.use_alternative_union_syntax == "y" -%}
 from typing import Any
+{%- else -%}
+from typing import Any, Optional
+{%- endif %}
 
 import xdg.BaseDirectory  # type: ignore
 
@@ -12,7 +16,13 @@ from .settings import PACKAGE_NAME
 logger = get_logger(__name__)
 
 
+{% if cookiecutter.use_alternative_union_syntax == "y" -%}
 def config_get(key: str, default: Any | None = None) -> Any | None:
+{%- else -%}
+def config_get(
+    key: str, default: Optional[Any] = None
+) -> Optional[Any]:
+{%- endif %}
     """Reads a config from the first level of a JSON file by key.
 
     :param key: the name of the top-level JSON property.
@@ -74,7 +84,11 @@ def config_set(key: str, value: Any) -> None:
     logger.info('New value written')
 
 
+{% if cookiecutter.use_alternative_union_syntax == "y" -%}
 def config_dir(subdir: str | None = None) -> str:
+{%- else -%}
+def config_dir(subdir: Optional[str] = None) -> str:
+{%- endif %}
     """Returns the configuration directory for this package.
 
     Respects the XDG settings. Also creates the directory if it does
