@@ -5,7 +5,7 @@ on:
   - workflow_call
 
 env:
-  CI_UV_VERSION: "0.6.9"
+  CI_UV_VERSION: "0.7.12"
 
 jobs:
   ci-checks:
