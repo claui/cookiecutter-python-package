@@ -108,7 +108,7 @@ hello.help = "Run hello"
 {% endif -%}
 html.script = "webbrowser:open('build/html/index.html')"
 html.help = "Browse HTML documentation"
-linter.cmd = "pylint --enable-all-extensions {{ cookiecutter.python_package_name }}"
+linter.cmd = "pylint --enable-all-extensions {{ cookiecutter.python_package_name }} tests"
 linter.help = "Check for style violations"
 man.cmd = "man build/man/
 {%- if cookiecutter.include_executable == "y" -%}
