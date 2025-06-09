@@ -25,6 +25,7 @@ extensions = [
 
 autoapi_dirs = ['../../{{ cookiecutter.python_package_name }}']
 autoapi_keep_files = True
+autoapi_ignore = ['**/stubs/**']
 autoapi_options = [
     'members',
     'undoc-members',
