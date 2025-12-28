@@ -9,7 +9,7 @@ on:
         required: true
 
 env:
-  CI_UV_VERSION: "0.7.12"
+  CI_UV_VERSION: "0.9.18"
 
 jobs:
   bump-version:
