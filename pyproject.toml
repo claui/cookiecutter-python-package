@@ -71,6 +71,9 @@ linter.help = "Check for style violations"
 typecheck.cmd = "mypy"
 typecheck.help = "Run static type checker"
 
+[tool.pylint]
+"messages control".disable = ["empty-comment", "useless-import-alias"]
+
 [tool.ruff]
 line-length = 72
 
