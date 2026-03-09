@@ -26,7 +26,7 @@ checkdepends=('python-pytest')
 provides=('{{ cookiecutter.pypi_package_name }}')
 conflicts=('{{ cookiecutter.pypi_package_name }}')
 options=('!strip')
-source=("git+file://$(git rev-parse --show-toplevel)")
+source=("git+file://$(git rev-parse --show-toplevel)#commit=$(git rev-parse --short HEAD)")
 sha512sums=('SKIP')
 
 pkgver() {
