@@ -44,6 +44,9 @@ To execute a single test, run e. g.:
 uv run poe tests -vv tests/test_{{ cookiecutter.first_module_name }}.py::test_hello
 ```
 
+To execute tests from VS Code, use the test runner built into the Python extension.
+You don’t need _Run tasks_ for executing tests.
+
 ### Running the linter
 
 To execute the linter, run:

@@ -1,4 +1,4 @@
-<!-- markdownlint-configure-file { "MD041": { "level": 1 } } -->
+<!-- markdownlint-configure-file { "MD025": { "level": 2 } } -->
 
 # Synopsis
 

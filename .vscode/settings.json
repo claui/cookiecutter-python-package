@@ -7,9 +7,6 @@
     // Built-in formatter disrespects insert_final_newline in .editorconfig
     "editor.formatOnSave": false
   },
-  "[python]": {
-    "editor.defaultFormatter": "charliermarsh.ruff"
-  },
   "[toml]": {
     "editor.defaultFormatter": "tamasfe.even-better-toml"
   },
@@ -35,6 +32,11 @@
     "**/.venv": true,
     "**/__pycache__": true
   },
+  // https://github.com/DavidAnson/vscode-markdownlint/issues/422
+  "json.schemaDownload.trustedDomains": {
+    "https://raw.githubusercontent.com/DavidAnson/markdownlint/": true,
+    "https://raw.githubusercontent.com/SchemaStore/schemastore/": true
+  },
   "pylint.args": [
     "--enable-all-extensions"
   ],
@@ -50,6 +52,5 @@
   /* Disable Ruff because it chokes on Jinja pyproject.toml templates */
   "ruff.enable": false,
   "python.analysis.autoImportCompletions": true,
-  "python.analysis.typeCheckingMode": "basic",
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python"
+  "python.analysis.typeCheckingMode": "basic"
 }

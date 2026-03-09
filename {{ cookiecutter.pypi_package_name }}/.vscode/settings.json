@@ -29,6 +29,11 @@
     "**/*.egg-info": true,
     "**/__pycache__": true
   },
+  // https://github.com/DavidAnson/vscode-markdownlint/issues/422
+  "json.schemaDownload.trustedDomains": {
+    "https://raw.githubusercontent.com/DavidAnson/markdownlint/": true,
+    "https://raw.githubusercontent.com/SchemaStore/schemastore/": true
+  },
   "pylint.args": [
     "--enable-all-extensions"
   ],
@@ -38,9 +43,6 @@
   "pylint.severity": {
     "refactor": "Warning"
   },
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.typeCheckingMode": "basic",
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
   "python.testing.pytestArgs": [
     "tests"
   ],
