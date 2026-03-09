@@ -123,3 +123,19 @@ To update the `doc/requirements.txt` file for Read the Docs, run:
 ```shell
 uv export --only-group doc --output-file doc/requirements.txt
 ```
+
+### Rebuild `{{ cookiecutter.pypi_package_name }}-local` for Arch Linux packaging tests
+
+From a clean Git working tree, run:
+
+```bash
+(
+  set -ex
+  git add -p -- contrib/archlinux/{{ cookiecutter.pypi_package_name }}-local/PKGBUILD
+  rm -fv contrib/archlinux/{{ cookiecutter.pypi_package_name }}-local/*.tar.zst
+  env -C contrib/archlinux/{{ cookiecutter.pypi_package_name }}-local makepkg -cfs
+  git checkout -- contrib/archlinux/{{ cookiecutter.pypi_package_name }}-local/PKGBUILD
+  namcap contrib/archlinux/{{ cookiecutter.pypi_package_name }}-local/PKGBUILD
+  sudo pacman -U contrib/archlinux/{{ cookiecutter.pypi_package_name }}-local/*.tar.zst
+)
+```
